@@ -36,7 +36,7 @@ public class TesteLeituraMapa {
 	
 	
 	@Test
-	public void explorarMapas(){
+	public void explorarMapas1(){
 		String mapa1 = ". . . .\n"+
 					   ". . . .\n"+
 					   ". . . F\n"+
@@ -51,8 +51,43 @@ public class TesteLeituraMapa {
 		explorador.definirMapas(mapa1, mapa2);		
 		assertEquals(3, explorador.explorarMapas());				
 	}
-
 	
+	public void mapaDeStringParaArray(){
+		String mapa1 = ". . . .\n"+
+		   ". . . .\n"+
+		   ". . . F\n"+
+		   ". . # R";
+
+		String mapa2 = ". . . .\n"+
+		   ". . . .\n"+
+		   ". F B B\n"+
+		   "# . . R";
+
+		Explorador explorador = new Explorador();
+		explorador.definirMapas(mapa1, mapa2);		
+		
+		String [] array = explorador.getArrayMapa1();
+		array = explorador.getArrayMapa1()
+		assertEquals(4, );
+	}
+/*
+	@Test
+	public void explorarMapas2(){
+		String mapa1 = ". B F B\n"+
+					   ". . . #\n"+
+					   ". # B B\n"+
+					   ". . . R";
+		
+		String mapa2 = "# # # #\n"+
+		   			   ". B B F\n"+
+		   			   ". . . .\n"+
+		   			   "# R . .";
+		
+		Explorador explorador = new Explorador();
+		explorador.definirMapas(mapa1, mapa2);		
+		assertEquals(12, explorador.explorarMapas());				
+	}
+	*/
 }
 
 
