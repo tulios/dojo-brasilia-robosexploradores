@@ -64,21 +64,35 @@ public class TesteLeituraMapa {
 		
 		mapa = mapa.replaceAll(" ", "");
 		
-		//linha 1
 		for (int i = 0; i < 4; i++) {
 			assertEquals(mapa.charAt(i), array[0][i]);
-		}
-		//linha 2
-		for (int i = 0; i < 4; i++) {
 			assertEquals(mapa.charAt(5+i), array[1][i]);
-		}
-		//linha 3
-		for (int i = 0; i < 4; i++) {
 			assertEquals(mapa.charAt(10+i), array[2][i]);
-		}
-		//linha 4
-		for (int i = 0; i < 4; i++) {
 			assertEquals(mapa.charAt(15+i), array[3][i]);
+
+		}
+	}
+	
+	@Test
+	public void mapaMaiorDeStringParaArray(){
+		String mapa =  ". . . . .\n"+
+		   			   ". . . . .\n"+
+		   			   ". F B B B\n"+
+		   			   "# . . R #\n"+
+		   			   ". # # # #";
+		
+		char[][] array = Explorador.stringToArray(mapa);
+		assertEquals(5, array.length);
+		
+		mapa = mapa.replaceAll(" ", "");
+		
+		for (int i = 0; i < 5; i++) {
+			assertEquals(mapa.charAt(i), array[0][i]);
+			assertEquals(mapa.charAt(7+i), array[1][i]);
+			assertEquals(mapa.charAt(14+i), array[2][i]);
+			assertEquals(mapa.charAt(21+i), array[3][i]);
+			assertEquals(mapa.charAt(28+i), array[4][i]);
+
 		}
 	}
 /*
