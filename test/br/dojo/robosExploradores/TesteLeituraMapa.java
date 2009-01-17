@@ -30,6 +30,8 @@ public class TesteLeituraMapa {
 		Explorador explorador = new Explorador();
 		explorador.definirMapas(mapa1, mapa2);
 		
+		assertTrue(explorador.getMapa1().equals(mapa1));
+		assertTrue(explorador.getMapa2().equals(mapa2));		
 	}
 	
 }
