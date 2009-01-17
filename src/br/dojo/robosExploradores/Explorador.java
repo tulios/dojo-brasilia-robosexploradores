@@ -5,7 +5,9 @@ public class Explorador {
 	private int coluna;
 	private String mapa1;
 	private String mapa2;
-
+	private char[][] arrayMapa1;
+	private char[][] arrayMapa2;
+	
 	public int getLinha() {
 		return linha;
 	}
@@ -35,6 +37,10 @@ public class Explorador {
 	public void definirMapas(String mapa1, String mapa2) {
 		this.mapa1 = mapa1;
 		this.mapa2 = mapa2;
+		
+		this.arrayMapa1 = stringToArray(mapa1);
+		this.arrayMapa2 = stringToArray(mapa2);
+		
 	}
 	
 	public int explorarMapas() {
