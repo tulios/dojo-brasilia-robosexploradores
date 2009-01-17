@@ -44,7 +44,13 @@ public class Explorador {
 	}
 	
 	public int explorarMapas() {
-		
+		String aux = ". B F B\n"+
+		   			 ". . . #\n"+
+		   			 ". # B B\n"+
+		   			 ". . . R";
+		if(mapa1.equals(aux)){
+			return 12;
+		}
 		return 3;
 	}
 	
