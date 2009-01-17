@@ -46,12 +46,12 @@ public class Explorador {
 		mapa = mapa.replaceAll(" ", "");
 		String[] linhas = mapa.split("\n");
 		
-		char [][] retorno = new char[linhas.length][linhas.length];
+		char [][] retorno = new char[linhas.length][linhas[0].length()];
 		
 		
 		for (int x=0; x<linhas.length; x++){
 			for (int y = 0; y < linhas[0].length(); y++){
-				retorno[y][x] = linhas[y].charAt(x);
+				retorno[x][y] = linhas[x].charAt(y);
 			}									
 		} 
 		return retorno;

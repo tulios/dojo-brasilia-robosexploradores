@@ -61,6 +61,7 @@ public class TesteLeituraMapa {
 		
 		char[][] array = Explorador.stringToArray(mapa);
 		assertEquals(4, array.length);
+		assertEquals(4, array[0].length);
 		
 		mapa = mapa.replaceAll(" ", "");
 		
@@ -83,6 +84,7 @@ public class TesteLeituraMapa {
 		
 		char[][] array = Explorador.stringToArray(mapa);
 		assertEquals(5, array.length);
+		assertEquals(5, array[0].length);
 		
 		mapa = mapa.replaceAll(" ", "");
 		
@@ -107,19 +109,20 @@ public class TesteLeituraMapa {
 		
 		char[][] array = Explorador.stringToArray(mapa);
 		assertEquals(6, array.length);
+		assertEquals(5, array[5].length);
 		
 		mapa = mapa.replaceAll(" ", "");
-		/*
-		for (int i = 0; i < 6; i++) {
+		
+		for (int i = 0; i < 5; i++) {
 			assertEquals(mapa.charAt(i), array[0][i]);
 			assertEquals(mapa.charAt(6+i), array[1][i]);
 			assertEquals(mapa.charAt(12+i), array[2][i]);
 			assertEquals(mapa.charAt(18+i), array[3][i]);
 			assertEquals(mapa.charAt(24+i), array[4][i]);
-			//assertEquals(mapa.charAt(30+i), array[5][i]);
+			assertEquals(mapa.charAt(30+i), array[5][i]);
 
 		}
-		*/
+		
 	}
 	
 	
