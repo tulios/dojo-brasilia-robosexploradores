@@ -41,6 +41,7 @@ public class Explorador {
 		
 		return 3;
 	}
+	
 	public static char[][] stringToArray(String mapa) {
 		mapa = mapa.replaceAll(" ", "");
 		String[] linhas = mapa.split("\n");
@@ -49,11 +50,9 @@ public class Explorador {
 		
 		
 		for (int x=0; x<linhas.length; x++){
-			retorno[0][x] = linhas[0].charAt(x);
-			retorno[1][x] = linhas[1].charAt(x);
-			retorno[2][x] = linhas[2].charAt(x);
-			retorno[3][x] = linhas[3].charAt(x);
-			retorno[4][x] = linhas[4].charAt(x);
+			for (int y = 0; y < linhas[0].length(); y++){
+				retorno[y][x] = linhas[y].charAt(x);
+			}									
 		} 
 		return retorno;
 	}

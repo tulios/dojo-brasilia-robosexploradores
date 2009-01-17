@@ -88,13 +88,41 @@ public class TesteLeituraMapa {
 		
 		for (int i = 0; i < 5; i++) {
 			assertEquals(mapa.charAt(i), array[0][i]);
-			assertEquals(mapa.charAt(7+i), array[1][i]);
-			assertEquals(mapa.charAt(14+i), array[2][i]);
-			assertEquals(mapa.charAt(21+i), array[3][i]);
-			assertEquals(mapa.charAt(28+i), array[4][i]);
+			assertEquals(mapa.charAt(6+i), array[1][i]);
+			assertEquals(mapa.charAt(12+i), array[2][i]);
+			assertEquals(mapa.charAt(18+i), array[3][i]);
+			assertEquals(mapa.charAt(24+i), array[4][i]);
 
 		}
 	}
+	
+	@Test
+	public void verificaMapaRetangularDeStringParaArray(){
+		String mapa =  ". . . . .\n"+
+		   			   ". . . . .\n"+
+		   			   ". F B B B\n"+
+		   			   "# . . R #\n"+
+		   			   "# . . . #\n"+
+		   			   ". # # # #";
+		
+		char[][] array = Explorador.stringToArray(mapa);
+		assertEquals(6, array.length);
+		
+		mapa = mapa.replaceAll(" ", "");
+		/*
+		for (int i = 0; i < 6; i++) {
+			assertEquals(mapa.charAt(i), array[0][i]);
+			assertEquals(mapa.charAt(6+i), array[1][i]);
+			assertEquals(mapa.charAt(12+i), array[2][i]);
+			assertEquals(mapa.charAt(18+i), array[3][i]);
+			assertEquals(mapa.charAt(24+i), array[4][i]);
+			//assertEquals(mapa.charAt(30+i), array[5][i]);
+
+		}
+		*/
+	}
+	
+	
 /*
 	@Test
 	public void explorarMapas2(){
