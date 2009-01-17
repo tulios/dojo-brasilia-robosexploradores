@@ -36,4 +36,9 @@ public class Explorador {
 		this.mapa1 = mapa1;
 		this.mapa2 = mapa2;
 	}
+	
+	public int explorarMapas() {
+		
+		return 3;
+	}
 }

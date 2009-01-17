@@ -16,7 +16,7 @@ public class TesteLeituraMapa {
 	}
 	
 	@Test
-	public void verificaLeituraMapa(){
+	public void verificaDefinicaoMapas(){
 		String mapa1 = ". . . .\n"+
 					   ". . . .\n"+
 					   ". . . F\n"+
@@ -33,6 +33,25 @@ public class TesteLeituraMapa {
 		assertTrue(explorador.getMapa1().equals(mapa1));
 		assertTrue(explorador.getMapa2().equals(mapa2));		
 	}
+	
+	
+	@Test
+	public void explorarMapas(){
+		String mapa1 = ". . . .\n"+
+					   ". . . .\n"+
+					   ". . . F\n"+
+					   ". . # R";
+		
+		String mapa2 = ". . . .\n"+
+		   			   ". . . .\n"+
+		   			   ". F B B\n"+
+		   			   "# . . R";
+		
+		Explorador explorador = new Explorador();
+		explorador.definirMapas(mapa1, mapa2);		
+		assertEquals(3, explorador.explorarMapas());				
+	}
+
 	
 }
 
