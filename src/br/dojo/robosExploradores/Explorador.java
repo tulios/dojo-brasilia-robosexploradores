@@ -53,7 +53,7 @@ public class Explorador {
 			retorno[1][x] = linhas[1].charAt(x);
 			retorno[2][x] = linhas[2].charAt(x);
 			retorno[3][x] = linhas[3].charAt(x);
-		}
+		} 
 		return retorno;
 	}
 }
