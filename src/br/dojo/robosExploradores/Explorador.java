@@ -41,6 +41,21 @@ public class Explorador {
 		
 		return 3;
 	}
+	public static char[][] stringToArray(String mapa) {
+		char [][] retorno = new char[4][4];
+		
+		mapa = mapa.replaceAll(" ", "");
+		
+		String[] linhas = mapa.split("\n");
+		//linha 1
+		for (int x=0; x<4; x++){
+			retorno[0][x] = linhas[0].charAt(x);
+			retorno[1][x] = linhas[1].charAt(x);
+			retorno[2][x] = linhas[2].charAt(x);
+			retorno[3][x] = linhas[3].charAt(x);
+		}
+		return retorno;
+	}
 }
 
 
