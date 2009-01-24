@@ -56,6 +56,8 @@ public class Explorador {
 		*/
 		int r = 0;
 		int f = 0;
+		int r2 = 0;
+		int f2 = 0;
 		
 		for(int i=0; i < arrayMapa1[0].length; i++ ){
 			if(arrayMapa1[0][i] == 'R')
@@ -63,6 +65,8 @@ public class Explorador {
 			if(arrayMapa1[0][i] == 'F')
 				f = i;
 		}
+		if(f-r == 0)
+			return 1;
 		return Math.abs(f - r);
 	}
 	
