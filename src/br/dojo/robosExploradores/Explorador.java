@@ -52,20 +52,17 @@ public class Explorador {
 		int qtdLinhas = arrayMapa1.length;			
 		int qtdColunas = arrayMapa1[0].length;
 		
-		
-		
 		for(int i=0; i < qtdColunas; i++ ){
-			if(arrayMapa1[0][i] == 'R')
-				yRobo = i;
-			if(arrayMapa1[0][i] == 'F')
-				yFinal = i;
-		}
-		
-		for(int i=0; i < qtdLinhas; i++ ){
-			if(arrayMapa1[i][0] == 'R')
-				xRobo = i;
-			if(arrayMapa1[i][0] == 'F')
-				xFinal = i;
+			for(int j=0; j < qtdLinhas; j++ ){
+				if(arrayMapa1[j][i] == 'R'){
+					yRobo = i;
+					xRobo = j;
+				}
+				if(arrayMapa1[j][i] == 'F'){
+					yFinal = i;
+					xFinal = j;
+				}
+			}
 		}
 		
 		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
