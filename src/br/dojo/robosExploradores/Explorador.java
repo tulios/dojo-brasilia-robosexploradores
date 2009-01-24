@@ -54,7 +54,16 @@ public class Explorador {
 		}
 		return 3;
 		*/
-		return arrayMapa1[0].length - 1;
+		int r = 0;
+		int f = 0;
+		
+		for(int i=0; i < arrayMapa1[0].length; i++ ){
+			if(arrayMapa1[0][i] == 'R')
+				r = i;
+			if(arrayMapa1[0][i] == 'F')
+				f = i;
+		}
+		return (f - r);
 	}
 	
 	public static char[][] stringToArray(String mapa) {
