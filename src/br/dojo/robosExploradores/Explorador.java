@@ -44,6 +44,7 @@ public class Explorador {
 	}
 	
 	public int explorarMapas() {
+		/*
 		String aux = ". B F B\n"+
 		   			 ". . . #\n"+
 		   			 ". # B B\n"+
@@ -52,6 +53,8 @@ public class Explorador {
 			return 12;
 		}
 		return 3;
+		*/
+		return arrayMapa1[0].length - 1;
 	}
 	
 	public static char[][] stringToArray(String mapa) {

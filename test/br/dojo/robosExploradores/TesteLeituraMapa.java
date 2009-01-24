@@ -108,6 +108,7 @@ public class TesteLeituraMapa {
 		}
 		
 	}
+	/*
 	@Test
 	public void explorarMapas1(){
 		String mapa1 = ". . . .\n"+
@@ -124,9 +125,9 @@ public class TesteLeituraMapa {
 		explorador.definirMapas(mapa1, mapa2);		
 		assertEquals(3, explorador.explorarMapas());				
 	}
+	*/
 	
-	
-
+	/*
 	@Test
 	public void explorarMapas2(){
 		String mapa1 = ". B F B\n"+
@@ -141,9 +142,9 @@ public class TesteLeituraMapa {
 		
 		Explorador explorador = new Explorador();
 		explorador.definirMapas(mapa1, mapa2);		
-		assertEquals(12, explorador.explorarMapas());				
+		assertEquals(12, explorador.explorarMapas());
 	}
-	
+	*/
 }
 
 
