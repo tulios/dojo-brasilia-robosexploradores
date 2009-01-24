@@ -68,9 +68,9 @@ public class Explorador {
 				f2 = i;
 		}
 		
-		if(f-r == 0)
-			
-			return (f2-r2);
+		if(f-r == 0) {
+			return Math.abs(f2-r2);
+		}
 		
 		return Math.abs(f - r);
 	}

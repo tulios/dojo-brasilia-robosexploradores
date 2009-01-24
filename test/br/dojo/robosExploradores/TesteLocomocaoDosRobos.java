@@ -138,6 +138,39 @@ public class TesteLocomocaoDosRobos {
 		assertEquals(2, resultado);
 	}
 	
+	@Test
+	public void andarMapa_F_o_R_o(){
+		String mapa = 	"F\n" +
+						".\n" +
+						"R\n" +
+						".";
+		
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(2, resultado);
+	}
+	
+	@Test
+	public void andarMapa_F_o_o_o_R_o_o(){
+		String mapa = 	"F\n" +
+						".\n" +
+						".\n" +
+						".\n" +
+						"R\n" +
+						".\n" +
+						".";
+		
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(4, resultado);
+	}
+	
 }
 
 
