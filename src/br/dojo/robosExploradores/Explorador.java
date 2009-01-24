@@ -46,6 +46,8 @@ public class Explorador {
 	public int explorarMapas() {
 		int r = 0;
 		int f = 0;
+		int r2 = 0;
+		int f2 = 0;
 		
 		int qtdLinhas = arrayMapa1.length;			
 		int qtdColunas = arrayMapa1[0].length;
@@ -58,9 +60,17 @@ public class Explorador {
 			if(arrayMapa1[0][i] == 'F')
 				f = i;
 		}
+		
+		for(int i=0; i < qtdLinhas; i++ ){
+			if(arrayMapa1[i][0] == 'R')
+				r2 = i;
+			if(arrayMapa1[i][0] == 'F')
+				f2 = i;
+		}
+		
 		if(f-r == 0)
 			
-			return qtdLinhas - 1;
+			return (f2-r2);
 		
 		return Math.abs(f - r);
 	}
