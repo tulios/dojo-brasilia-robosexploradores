@@ -59,6 +59,17 @@ public class TesteLocomocaoDosRobos {
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 	}
+
+	@Test
+	public void andarMapa_oFR(){
+		String mapa = ". F R";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(1, resultado);
+	}
 	
 }
 

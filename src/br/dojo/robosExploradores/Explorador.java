@@ -63,7 +63,7 @@ public class Explorador {
 			if(arrayMapa1[0][i] == 'F')
 				f = i;
 		}
-		return (f - r);
+		return Math.abs(f - r);
 	}
 	
 	public static char[][] stringToArray(String mapa) {
