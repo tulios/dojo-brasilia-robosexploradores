@@ -94,6 +94,20 @@ public class TesteLocomocaoDosRobos {
 		assertEquals(1, resultado);
 	}
 	
+	@Test
+	public void andarMapa_R_o_F(){
+		String mapa = 	"R\n" +
+						".\n"   +
+						"F";
+		
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(2, resultado);
+	}
+	
 }
 
 

@@ -66,7 +66,9 @@ public class Explorador {
 				f = i;
 		}
 		if(f-r == 0)
-			return 1;
+			
+			return arrayMapa1.length - 1;
+		
 		return Math.abs(f - r);
 	}
 	
