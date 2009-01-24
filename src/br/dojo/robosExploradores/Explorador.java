@@ -44,22 +44,15 @@ public class Explorador {
 	}
 	
 	public int explorarMapas() {
-		/*
-		String aux = ". B F B\n"+
-		   			 ". . . #\n"+
-		   			 ". # B B\n"+
-		   			 ". . . R";
-		if(mapa1.equals(aux)){
-			return 12;
-		}
-		return 3;
-		*/
 		int r = 0;
 		int f = 0;
-		int r2 = 0;
-		int f2 = 0;
 		
-		for(int i=0; i < arrayMapa1[0].length; i++ ){
+		int qtdLinhas = arrayMapa1.length;			
+		int qtdColunas = arrayMapa1[0].length;
+		
+		
+		
+		for(int i=0; i < qtdColunas; i++ ){
 			if(arrayMapa1[0][i] == 'R')
 				r = i;
 			if(arrayMapa1[0][i] == 'F')
@@ -67,7 +60,7 @@ public class Explorador {
 		}
 		if(f-r == 0)
 			
-			return arrayMapa1.length - 1;
+			return qtdLinhas - 1;
 		
 		return Math.abs(f - r);
 	}
