@@ -198,6 +198,36 @@ public class TesteLocomocaoDosRobos {
 		int resultado = e.explorarMapas();
 		assertEquals(5, resultado);
 	}
+
+	@Test
+	public void andarMapaComplexo2(){
+		String mapa = 	". . . . .\n" +
+						". F . . .\n" +
+						". . R . .\n" +
+						". . . . .";
+		
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(2, resultado);
+	}
+	
+	@Test
+	public void andarMapaComplexo3(){
+		String mapa = 	". . . . .\n" +
+						". R . . .\n" +
+						". . . . .\n" +
+						"F . . . .";
+		
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(3, resultado);
+	}
 	
 }
 
