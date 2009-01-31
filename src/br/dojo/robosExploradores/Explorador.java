@@ -7,10 +7,12 @@ public class Explorador {
 	private String mapa2;
 	private char[][] arrayMapa1;
 	private char[][] arrayMapa2;
-	private int yRobo;
-	private int yFinal;
-	private int xRobo;
-	private int xFinal;
+	
+	private int linhaRobo;
+	private int colunaRobo;
+	
+	private int colunaFinal;
+	private int linhaFinal;
 
 	public int getLinha() {
 		return linha;
@@ -54,43 +56,43 @@ public class Explorador {
 		return 1;
 	}*/
 	
-	public char[][] andar(char[][] mapa, int[] robo) {
+	public char[][] andar(char[][] mapa) {
 		
-		if (podeSubir(mapa, robo)){
+		if (podeSubir(mapa)){
 			
-			subir(mapa, robo);
+			subir(mapa);
 			
 		}else{
-			if (podeAndarEsquerda(mapa, robo) ){
+			if (podeAndarEsquerda(mapa) ){
 				
-				andarEsquerda(mapa, robo);
-			}else if (podeAndarDireita(mapa, robo)){
+				andarEsquerda(mapa);
+			}else if (podeAndarDireita(mapa)){
 				
-				andarDireita(mapa, robo);
+				andarDireita(mapa);
 			}
 		}
 		return mapa;
 	}
-	private void andarDireita(char[][] mapa, int[] robo) {
-		mapa[robo[0]][robo[1]] = '*';
-		mapa[robo[0]][robo[1]+1] = 'R';
+	private void andarDireita(char[][] mapa) {
+		mapa[linhaRobo][colunaRobo] = '*';
+		mapa[linhaRobo][colunaRobo+1] = 'R';
 	}
-	private void andarEsquerda(char[][] mapa, int[] robo) {
-		mapa[robo[0]][robo[1]] = '*';
-		mapa[robo[0]][robo[1]-1] = 'R';
+	private void andarEsquerda(char[][] mapa) {
+		mapa[linhaRobo][colunaRobo] = '*';
+		mapa[linhaRobo][colunaRobo-1] = 'R';
 	}
-	private void subir(char[][] mapa, int[] robo) {
-		mapa[robo[0]][robo[1]] = '*';
-		mapa[robo[0]-1][robo[1]] = 'R';
+	private void subir(char[][] mapa) {
+		mapa[linhaRobo][colunaRobo] = '*';
+		mapa[linhaRobo-1][colunaRobo] = 'R';
 	}
-	private boolean podeAndarDireita(char[][] mapa, int[] robo) {
-		return (robo[1]+1) < mapa[0].length;
+	private boolean podeAndarDireita(char[][] mapa) {
+		return (colunaRobo+1) < mapa[0].length;
 	}
-	private boolean podeAndarEsquerda(char[][] mapa, int[] robo) {
-		return (robo[1]-1) >= 0 && mapa[robo[0]][robo[1]-1] == '.';
+	private boolean podeAndarEsquerda(char[][] mapa) {
+		return (colunaRobo-1) >= 0 && mapa[linhaRobo][colunaRobo-1] == '.';
 	}
-	private boolean podeSubir(char[][] mapa, int[] robo) {
-		return (robo[0] - 1) >= 0 && mapa[robo[0]-1][robo[1]] == '.';
+	private boolean podeSubir(char[][] mapa) {
+		return (linhaRobo - 1) >= 0 && mapa[linhaRobo-1][colunaRobo] == '.';
 	}
 	
 	public int explorarMapas() {
@@ -102,20 +104,13 @@ public class Explorador {
 				return 1;
 			}
 			
-			int[] robo = new int[2];
+			
 			int qtdLinhas = arrayMapa1.length;			
 			int qtdColunas = arrayMapa1[0].length;
 			
-			for(int y=0; y < qtdColunas; y++ ){
-				for(int x=0; x < qtdLinhas; x++ ){
-					if(arrayMapa1[x][y] == 'R'){
-						robo[1] = y;
-						robo[0] = x;
-					}					
-				}
-			}
 			
-			arrayMapa1 = andar(arrayMapa1, robo);
+			
+			arrayMapa1 = andar(arrayMapa1);
 			
 			return explorarMapas()+1;
 			
@@ -125,7 +120,7 @@ public class Explorador {
 	
 	private int calculaDistancia() {
 		localizarRoboEFinal();
-		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
+		return Math.abs(colunaFinal - colunaRobo)+Math.abs(linhaFinal-linhaRobo);
 	}
 	private void localizarRoboEFinal() {
 		int qtdLinhas = arrayMapa1.length;			
@@ -134,12 +129,12 @@ public class Explorador {
 		for(int y=0; y < qtdColunas; y++ ){
 			for(int x=0; x < qtdLinhas; x++ ){
 				if(arrayMapa1[x][y] == 'R'){
-					yRobo = y;
-					xRobo = x;
+					colunaRobo = y;
+					linhaRobo = x;
 				}
 				if(arrayMapa1[x][y] == 'F'){
-					yFinal = y;
-					xFinal = x;
+					colunaFinal = y;
+					linhaFinal = x;
 				}
 			}
 		}
