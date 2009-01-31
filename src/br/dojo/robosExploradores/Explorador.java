@@ -50,10 +50,15 @@ public class Explorador {
 		return 1;
 	}*/
 	
-	public char[][] andar(char[][] mapa){
-		mapa[1][0] = '.';
-		mapa[0][0] = 'R';
-		
+	public char[][] andar(char[][] mapa) {
+		if (mapa[2][0] == 'R') {
+			mapa[2][0] = '.';
+			mapa[1][0] = 'R';
+
+		} else {
+			mapa[1][0] = '.';
+			mapa[0][0] = 'R';
+		}
 		return mapa;
 	}
 	
