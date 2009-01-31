@@ -51,22 +51,55 @@ public class Explorador {
 	}*/
 	
 	public char[][] andar(char[][] mapa) {
+		
 		if (mapa[2][1] == 'R') {
-			mapa[2][1] = '.';
-			mapa[2][0] = 'R';
+			if (mapa[1][0] != '#') {
+				mapa[2][1] = '.';
+				mapa[2][0] = 'R';
+			} else {
+				mapa[2][1] = '.';
+				mapa[1][1] = 'R';
+			}
 			
 		}else if (mapa[2][0] == 'R') {
-			mapa[2][0] = '.';
-			mapa[1][0] = 'R';
+			if (mapa[1][0] != '#') {
+				mapa[2][0] = '.';
+				mapa[1][0] = 'R';
+			} else {
+				mapa[2][0] = '.';
+				mapa[2][1] = 'R';
+			}
 
-		} else {
+		} else if (mapa[1][0] == 'R') {
 			mapa[1][0] = '.';
 			mapa[0][0] = 'R';
+		} else if(mapa[1][1] == 'R'){
+			mapa[1][1] = '.';
+			mapa[0][1] = 'R';
+		} else {
+			mapa[0][1] = 'R';
+			mapa[1][1] = '.';
 		}
 		return mapa;
 	}
 	
 	public int explorarMapas() {
+		
+		int distancia = calculaDistancia();
+		
+		if (mapa1.contains("#")){			
+			if(distancia== 1){
+				return 1;
+			}
+			arrayMapa1 = andar(arrayMapa1);
+			
+			return explorarMapas()+1;
+			
+		}
+		return distancia;
+	}
+	
+	private int calculaDistancia() {
 		int yRobo = 0;
 		int yFinal = 0;
 		int xRobo = 0;
@@ -86,16 +119,6 @@ public class Explorador {
 					xFinal = x;
 				}
 			}
-		}
-		
-		if (mapa1.contains("#")){			
-			if(Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo) == 1){
-				return 1;
-			}
-			arrayMapa1 = andar(arrayMapa1);
-			
-			return explorarMapas()+1;
-			
 		}
 		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
 	}
