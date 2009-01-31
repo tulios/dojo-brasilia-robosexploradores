@@ -42,12 +42,16 @@ public class Explorador {
 		this.arrayMapa2 = stringToArray(mapa2);
 
 	}
-	
+	/*
 	public int subir(int x, int y){		
 		return 2;
 	}
 	public int dir(int x, int y){		
 		return 1;
+	}*/
+	
+	public char[][] andar(char[][] mapa){
+		return mapa;
 	}
 	
 	public int explorarMapas() {
@@ -62,21 +66,18 @@ public class Explorador {
 		if (mapa1.contains("#")){
 			for(int y=0; y < qtdColunas; y++ ){
 				for(int x=0; x < qtdLinhas; x++ ){
-					if(arrayMapa1[x][y] == 'R'){
-						yRobo = y;
-						xRobo = x;
+					if(arrayMapa1[x][y] == 'R' &&
+					   arrayMapa1[x][y+1] == 'F' ||
+					   arrayMapa1[x-1][y] == 'F' ||
+					   arrayMapa1[x+1][y] == 'F' ||
+					   arrayMapa1[x][y-1] == 'F'){
+						return 1;
 					}
 				}
 			}
-			int count = 0;
+			arrayMapa1 = andar(arrayMapa1);
 			
-			if(arrayMapa1[2][1]=='R'){
-				return 4;
-			}
-			count += subir(xRobo, yRobo);
-			count += dir(xRobo, yRobo);
-			
-			return count;
+			return explorarMapas();
 			
 		}else{
 			for(int y=0; y < qtdColunas; y++ ){
