@@ -67,7 +67,11 @@ public class Explorador {
 				}
 			}
 		} else {
-			andarDireita();
+			if (colunaRobo-colunaFinal > 0) {
+				andarEsquerda();
+			} else {
+				andarDireita();
+			}
 		}
 		
 	}
