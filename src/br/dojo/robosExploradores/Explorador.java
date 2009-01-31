@@ -51,7 +51,11 @@ public class Explorador {
 	}*/
 	
 	public char[][] andar(char[][] mapa) {
-		if (mapa[2][0] == 'R') {
+		if (mapa[2][1] == 'R') {
+			mapa[2][1] = '.';
+			mapa[2][0] = 'R';
+			
+		}else if (mapa[2][0] == 'R') {
 			mapa[2][0] = '.';
 			mapa[1][0] = 'R';
 
