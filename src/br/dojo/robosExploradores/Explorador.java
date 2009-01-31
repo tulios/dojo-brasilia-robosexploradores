@@ -53,55 +53,23 @@ public class Explorador {
 	public char[][] andar(char[][] mapa, int[] robo) {
 		
 		//posso subir
-		if (mapa[robo[0]-1][robo[1]] != '#' &&
-			(robo[0] - 1) >= 0){
+		if ((robo[0] - 1) >= 0 && mapa[robo[0]-1][robo[1]] == '.'){
 			
-			mapa[robo[0]][robo[1]] = '.';
+			mapa[robo[0]][robo[1]] = '*';
 			mapa[robo[0]-1][robo[1]] = 'R';
 			
 		}else{
 			//esquerda?
-			if ((robo[1]-1) >= 0 && mapa[robo[0]][robo[1]-1] == '.'){
-				
-				mapa[robo[0]][robo[1]] = '.';
-				mapa[robo[0]][robo[1]-1] = 'R';
-			
+			if ((robo[1]-1) >= 0 && mapa[robo[0]][robo[1]-1] == '.' ){
+					mapa[robo[0]][robo[1]] = '*';
+					mapa[robo[0]][robo[1]-1] = 'R';
 			//direita?
-			}else if ((robo[1]+1) < mapa[0].length){
-				mapa[robo[0]][robo[1]] = '.';
+			}else if ((robo[1]+1) < mapa[0].length ){
+				
+				mapa[robo[0]][robo[1]] = '*';
 				mapa[robo[0]][robo[1]+1] = 'R';
 			}
 		}
-		/*
-		if (mapa[2][1] == 'R') {
-			if (mapa[1][0] != '#') {
-				mapa[2][1] = '.';
-				mapa[2][0] = 'R';
-			} else {
-				mapa[2][1] = '.';
-				mapa[1][1] = 'R';
-			}
-			
-		}else if (mapa[2][0] == 'R') {
-			if (mapa[1][0] != '#') {
-				mapa[2][0] = '.';
-				mapa[1][0] = 'R';
-			} else {
-				mapa[2][0] = '.';
-				mapa[2][1] = 'R';
-			}
-
-		} else if (mapa[1][0] == 'R') {
-			mapa[1][0] = '.';
-			mapa[0][0] = 'R';
-		} else if(mapa[1][1] == 'R'){
-			mapa[1][1] = '.';
-			mapa[0][1] = 'R';
-		} else {
-			mapa[0][1] = 'R';
-			mapa[1][1] = '.';
-		}
-		*/
 		return mapa;
 	}
 	
