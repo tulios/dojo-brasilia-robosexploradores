@@ -51,19 +51,23 @@ public class Explorador {
 	
 	public void andar() {
 		
-		if (podeSubir()){
-			subir();
-			
-		}else{
-			if (podeAndarEsquerda() ){
-				andarEsquerda();
-				
-			}else if (podeAndarDireita()){
-				andarDireita();
-				
-			}else if (podeDescer()){
-				descer();
+		if (linhaRobo-linhaFinal > 0) {
+			if (podeSubir()){
+				subir();
+
+			}else{
+				if (podeAndarEsquerda() ){
+					andarEsquerda();
+
+				}else if (podeAndarDireita()){
+					andarDireita();
+
+				}else if (podeDescer()){
+					descer();
+				}
 			}
+		} else {
+			andarDireita();
 		}
 		
 	}
