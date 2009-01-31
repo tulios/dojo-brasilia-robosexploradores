@@ -50,8 +50,29 @@ public class Explorador {
 		return 1;
 	}*/
 	
-	public char[][] andar(char[][] mapa) {
+	public char[][] andar(char[][] mapa, int[] robo) {
 		
+		//posso subir
+		if (mapa[robo[0]-1][robo[1]] != '#' &&
+			(robo[0] - 1) >= 0){
+			
+			mapa[robo[0]][robo[1]] = '.';
+			mapa[robo[0]-1][robo[1]] = 'R';
+			
+		}else{
+			//esquerda?
+			if ((robo[1]-1) >= 0 && mapa[robo[0]][robo[1]-1] == '.'){
+				
+				mapa[robo[0]][robo[1]] = '.';
+				mapa[robo[0]][robo[1]-1] = 'R';
+			
+			//direita?
+			}else if ((robo[1]+1) < mapa[0].length){
+				mapa[robo[0]][robo[1]] = '.';
+				mapa[robo[0]][robo[1]+1] = 'R';
+			}
+		}
+		/*
 		if (mapa[2][1] == 'R') {
 			if (mapa[1][0] != '#') {
 				mapa[2][1] = '.';
@@ -80,6 +101,7 @@ public class Explorador {
 			mapa[0][1] = 'R';
 			mapa[1][1] = '.';
 		}
+		*/
 		return mapa;
 	}
 	
@@ -88,10 +110,24 @@ public class Explorador {
 		int distancia = calculaDistancia();
 		
 		if (mapa1.contains("#")){			
-			if(distancia== 1){
+			if(distancia == 1){
 				return 1;
 			}
-			arrayMapa1 = andar(arrayMapa1);
+			
+			int[] robo = new int[2];
+			int qtdLinhas = arrayMapa1.length;			
+			int qtdColunas = arrayMapa1[0].length;
+			
+			for(int y=0; y < qtdColunas; y++ ){
+				for(int x=0; x < qtdLinhas; x++ ){
+					if(arrayMapa1[x][y] == 'R'){
+						robo[1] = y;
+						robo[0] = x;
+					}					
+				}
+			}
+			
+			arrayMapa1 = andar(arrayMapa1, robo);
 			
 			return explorarMapas()+1;
 			
