@@ -51,6 +51,7 @@ public class Explorador {
 	
 	public void andar() {
 		
+		//Se o robo estiver abaixo do final
 		if (linhaRobo-linhaFinal > 0) {
 			if (podeSubir()){
 				subir();
@@ -67,6 +68,7 @@ public class Explorador {
 				}
 			}
 		} else {
+			//Se o robo estiver a direita do final
 			if (colunaRobo-colunaFinal > 0) {
 				andarEsquerda();
 			} else {
