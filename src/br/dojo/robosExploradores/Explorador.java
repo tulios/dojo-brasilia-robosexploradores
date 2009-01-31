@@ -62,36 +62,30 @@ public class Explorador {
 
 		int qtdLinhas = arrayMapa1.length;			
 		int qtdColunas = arrayMapa1[0].length;
-
-		if (mapa1.contains("#")){
-			for(int y=0; y < qtdColunas; y++ ){
-				for(int x=0; x < qtdLinhas; x++ ){
-					if(arrayMapa1[x][y] == 'R' &&
-					   arrayMapa1[x][y+1] == 'F' ||
-					   arrayMapa1[x-1][y] == 'F' ||
-					   arrayMapa1[x+1][y] == 'F' ||
-					   arrayMapa1[x][y-1] == 'F'){
-						return 1;
-					}
+		
+		for(int y=0; y < qtdColunas; y++ ){
+			for(int x=0; x < qtdLinhas; x++ ){
+				if(arrayMapa1[x][y] == 'R'){
+					yRobo = y;
+					xRobo = x;
 				}
+				if(arrayMapa1[x][y] == 'F'){
+					yFinal = y;
+					xFinal = x;
+				}
+			}
+		}
+		
+		if (mapa1.contains("#")){
+			if(Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo) == 1){
+				return 1;
 			}
 			arrayMapa1 = andar(arrayMapa1);
 			
 			return explorarMapas();
 			
 		}else{
-			for(int y=0; y < qtdColunas; y++ ){
-				for(int x=0; x < qtdLinhas; x++ ){
-					if(arrayMapa1[x][y] == 'R'){
-						yRobo = y;
-						xRobo = x;
-					}
-					if(arrayMapa1[x][y] == 'F'){
-						yFinal = y;
-						xFinal = x;
-					}
-				}
-			}
+			
 		}
 		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
 	}
