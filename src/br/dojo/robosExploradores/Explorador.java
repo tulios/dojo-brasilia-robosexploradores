@@ -52,19 +52,24 @@ public class Explorador {
 	public void andar() {
 		
 		if (podeSubir()){
-			
 			subir();
 			
 		}else{
 			if (podeAndarEsquerda() ){
-				
 				andarEsquerda();
-			}else if (podeAndarDireita()){
 				
+			}else if (podeAndarDireita()){
 				andarDireita();
+				
+			}else if (podeDescer()){
+				descer();
 			}
 		}
 		
+	}
+	private void descer() {
+		arrayMapa1[linhaRobo][colunaRobo] = '*';
+		arrayMapa1[linhaRobo+1][colunaRobo] = 'R';
 	}
 	private void andarDireita() {
 		arrayMapa1[linhaRobo][colunaRobo] = '*';
@@ -79,13 +84,16 @@ public class Explorador {
 		arrayMapa1[linhaRobo-1][colunaRobo] = 'R';
 	}
 	private boolean podeAndarDireita() {
-		return (colunaRobo+1) < arrayMapa1[0].length;
+		return (colunaRobo+1) < arrayMapa1[0].length && arrayMapa1[linhaRobo][colunaRobo+1] == '.';
 	}
 	private boolean podeAndarEsquerda() {
 		return (colunaRobo-1) >= 0 && arrayMapa1[linhaRobo][colunaRobo-1] == '.';
 	}
 	private boolean podeSubir() {
 		return (linhaRobo - 1) >= 0 && arrayMapa1[linhaRobo-1][colunaRobo] == '.';
+	}
+	private boolean podeDescer() {
+		return (linhaRobo + 1) < arrayMapa1.length && arrayMapa1[linhaRobo+1][colunaRobo] == '.';
 	}
 	
 	public int explorarMapas() {
