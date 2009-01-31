@@ -56,43 +56,43 @@ public class Explorador {
 		return 1;
 	}*/
 	
-	public char[][] andar(char[][] mapa) {
+	public void andar() {
 		
-		if (podeSubir(mapa)){
+		if (podeSubir()){
 			
-			subir(mapa);
+			subir();
 			
 		}else{
-			if (podeAndarEsquerda(mapa) ){
+			if (podeAndarEsquerda() ){
 				
-				andarEsquerda(mapa);
-			}else if (podeAndarDireita(mapa)){
+				andarEsquerda();
+			}else if (podeAndarDireita()){
 				
-				andarDireita(mapa);
+				andarDireita();
 			}
 		}
-		return mapa;
+		
 	}
-	private void andarDireita(char[][] mapa) {
-		mapa[linhaRobo][colunaRobo] = '*';
-		mapa[linhaRobo][colunaRobo+1] = 'R';
+	private void andarDireita() {
+		arrayMapa1[linhaRobo][colunaRobo] = '*';
+		arrayMapa1[linhaRobo][colunaRobo+1] = 'R';
 	}
-	private void andarEsquerda(char[][] mapa) {
-		mapa[linhaRobo][colunaRobo] = '*';
-		mapa[linhaRobo][colunaRobo-1] = 'R';
+	private void andarEsquerda() {
+		arrayMapa1[linhaRobo][colunaRobo] = '*';
+		arrayMapa1[linhaRobo][colunaRobo-1] = 'R';
 	}
-	private void subir(char[][] mapa) {
-		mapa[linhaRobo][colunaRobo] = '*';
-		mapa[linhaRobo-1][colunaRobo] = 'R';
+	private void subir() {
+		arrayMapa1[linhaRobo][colunaRobo] = '*';
+		arrayMapa1[linhaRobo-1][colunaRobo] = 'R';
 	}
-	private boolean podeAndarDireita(char[][] mapa) {
-		return (colunaRobo+1) < mapa[0].length;
+	private boolean podeAndarDireita() {
+		return (colunaRobo+1) < arrayMapa1[0].length;
 	}
-	private boolean podeAndarEsquerda(char[][] mapa) {
-		return (colunaRobo-1) >= 0 && mapa[linhaRobo][colunaRobo-1] == '.';
+	private boolean podeAndarEsquerda() {
+		return (colunaRobo-1) >= 0 && arrayMapa1[linhaRobo][colunaRobo-1] == '.';
 	}
-	private boolean podeSubir(char[][] mapa) {
-		return (linhaRobo - 1) >= 0 && mapa[linhaRobo-1][colunaRobo] == '.';
+	private boolean podeSubir() {
+		return (linhaRobo - 1) >= 0 && arrayMapa1[linhaRobo-1][colunaRobo] == '.';
 	}
 	
 	public int explorarMapas() {
@@ -110,7 +110,7 @@ public class Explorador {
 			
 			
 			
-			arrayMapa1 = andar(arrayMapa1);
+			andar();
 			
 			return explorarMapas()+1;
 			
