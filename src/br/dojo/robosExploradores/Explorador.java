@@ -7,6 +7,10 @@ public class Explorador {
 	private String mapa2;
 	private char[][] arrayMapa1;
 	private char[][] arrayMapa2;
+	private int yRobo;
+	private int yFinal;
+	private int xRobo;
+	private int xFinal;
 
 	public int getLinha() {
 		return linha;
@@ -52,25 +56,41 @@ public class Explorador {
 	
 	public char[][] andar(char[][] mapa, int[] robo) {
 		
-		//posso subir
-		if ((robo[0] - 1) >= 0 && mapa[robo[0]-1][robo[1]] == '.'){
+		if (podeSubir(mapa, robo)){
 			
-			mapa[robo[0]][robo[1]] = '*';
-			mapa[robo[0]-1][robo[1]] = 'R';
+			subir(mapa, robo);
 			
 		}else{
-			//esquerda?
-			if ((robo[1]-1) >= 0 && mapa[robo[0]][robo[1]-1] == '.' ){
-					mapa[robo[0]][robo[1]] = '*';
-					mapa[robo[0]][robo[1]-1] = 'R';
-			//direita?
-			}else if ((robo[1]+1) < mapa[0].length ){
+			if (podeAndarEsquerda(mapa, robo) ){
 				
-				mapa[robo[0]][robo[1]] = '*';
-				mapa[robo[0]][robo[1]+1] = 'R';
+				andarEsquerda(mapa, robo);
+			}else if (podeAndarDireita(mapa, robo)){
+				
+				andarDireita(mapa, robo);
 			}
 		}
 		return mapa;
+	}
+	private void andarDireita(char[][] mapa, int[] robo) {
+		mapa[robo[0]][robo[1]] = '*';
+		mapa[robo[0]][robo[1]+1] = 'R';
+	}
+	private void andarEsquerda(char[][] mapa, int[] robo) {
+		mapa[robo[0]][robo[1]] = '*';
+		mapa[robo[0]][robo[1]-1] = 'R';
+	}
+	private void subir(char[][] mapa, int[] robo) {
+		mapa[robo[0]][robo[1]] = '*';
+		mapa[robo[0]-1][robo[1]] = 'R';
+	}
+	private boolean podeAndarDireita(char[][] mapa, int[] robo) {
+		return (robo[1]+1) < mapa[0].length;
+	}
+	private boolean podeAndarEsquerda(char[][] mapa, int[] robo) {
+		return (robo[1]-1) >= 0 && mapa[robo[0]][robo[1]-1] == '.';
+	}
+	private boolean podeSubir(char[][] mapa, int[] robo) {
+		return (robo[0] - 1) >= 0 && mapa[robo[0]-1][robo[1]] == '.';
 	}
 	
 	public int explorarMapas() {
@@ -104,11 +124,10 @@ public class Explorador {
 	}
 	
 	private int calculaDistancia() {
-		int yRobo = 0;
-		int yFinal = 0;
-		int xRobo = 0;
-		int xFinal = 0;
-
+		localizarRoboEFinal();
+		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
+	}
+	private void localizarRoboEFinal() {
 		int qtdLinhas = arrayMapa1.length;			
 		int qtdColunas = arrayMapa1[0].length;
 		
@@ -124,7 +143,6 @@ public class Explorador {
 				}
 			}
 		}
-		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
 	}
 
 	public static char[][] stringToArray(String mapa) {
