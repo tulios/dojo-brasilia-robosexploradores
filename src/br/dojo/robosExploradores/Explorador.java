@@ -48,13 +48,6 @@ public class Explorador {
 		this.arrayMapa2 = stringToArray(mapa2);
 
 	}
-	/*
-	public int subir(int x, int y){		
-		return 2;
-	}
-	public int dir(int x, int y){		
-		return 1;
-	}*/
 	
 	public void andar() {
 		
@@ -102,13 +95,7 @@ public class Explorador {
 		if (mapa1.contains("#")){			
 			if(distancia == 1){
 				return 1;
-			}
-			
-			
-			int qtdLinhas = arrayMapa1.length;			
-			int qtdColunas = arrayMapa1[0].length;
-			
-			
+			}		
 			
 			andar();
 			
