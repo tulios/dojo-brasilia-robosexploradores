@@ -51,6 +51,9 @@ public class Explorador {
 	}*/
 	
 	public char[][] andar(char[][] mapa){
+		mapa[1][0] = '.';
+		mapa[0][0] = 'R';
+		
 		return mapa;
 	}
 	
@@ -76,15 +79,13 @@ public class Explorador {
 			}
 		}
 		
-		if (mapa1.contains("#")){
+		if (mapa1.contains("#")){			
 			if(Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo) == 1){
 				return 1;
 			}
 			arrayMapa1 = andar(arrayMapa1);
 			
-			return explorarMapas();
-			
-		}else{
+			return explorarMapas()+1;
 			
 		}
 		return Math.abs(yFinal - yRobo)+Math.abs(xFinal-xRobo);
