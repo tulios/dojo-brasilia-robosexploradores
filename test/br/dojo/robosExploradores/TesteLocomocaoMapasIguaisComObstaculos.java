@@ -222,6 +222,18 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		assertEquals(4 , resultado);
 	}
 	
+	@Test
+	public void andarMapa_ooo_RXF(){
+		String mapa = 	". . . \n"+
+						"R # F \n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(4 , resultado);
+	}
+	
 }
 
 

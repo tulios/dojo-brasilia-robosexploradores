@@ -83,7 +83,12 @@ public class Explorador {
 				if (podeAndarDireita())
 					andarDireita();
 				else{
-					descer();
+					if (podeDescer())
+						descer();
+					else{
+						subir();
+					}
+						
 				}
 			}
 		}
