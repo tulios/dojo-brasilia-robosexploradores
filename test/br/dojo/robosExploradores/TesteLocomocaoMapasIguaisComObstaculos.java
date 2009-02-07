@@ -312,6 +312,20 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		int resultado = e.explorarMapas();
 		assertEquals(2 , resultado);
 	}
+
+	@Test
+	public void andarMapa_RoF_ooo_xoo(){
+		String mapa = 	"R . F \n"+
+						". . . \n"+
+						"# . . \n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(2 , resultado);
+	}
+	
 }
 
 

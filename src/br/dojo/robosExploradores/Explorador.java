@@ -76,18 +76,20 @@ public class Explorador {
 					if(podeSubir()){
 						subir();						
 					}else{
-						descer();
+						if(podeDescer())
+							descer();
 					}
 				}
 			} else {				
-				if (podeDescer()){
+				if (linhaRobo-linhaFinal < 0 && podeDescer()){
 					descer();
 				
 				}else if (podeAndarDireita())
 					andarDireita();
-				else{
+				else if (podeSubir()){
 					subir();
-				}
+				}else 
+					descer();
 			}
 		}
 		
