@@ -300,6 +300,18 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		assertEquals(4 , resultado);
 	}
 	
+	@Test
+	public void andarMapa_RoX_Xoo_Foo(){
+		String mapa = 	"R . # \n"+
+						". . . \n"+
+						"F . . \n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(2 , resultado);
+	}
 }
 
 

@@ -79,16 +79,14 @@ public class Explorador {
 						descer();
 					}
 				}
-			} else {
-				if (podeAndarDireita())
+			} else {				
+				if (podeDescer()){
+					descer();
+				
+				}else if (podeAndarDireita())
 					andarDireita();
 				else{
-					if (podeDescer())
-						descer();
-					else{
-						subir();
-					}
-						
+					subir();
 				}
 			}
 		}
