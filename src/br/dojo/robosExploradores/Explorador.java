@@ -70,7 +70,11 @@ public class Explorador {
 		} else {
 			//Se o robo estiver a direita do final
 			if (colunaRobo-colunaFinal > 0) {
-				andarEsquerda();
+				if(podeAndarEsquerda()){
+					andarEsquerda();
+				}else {
+					subir();
+				}
 			} else {
 				andarDireita();
 			}
