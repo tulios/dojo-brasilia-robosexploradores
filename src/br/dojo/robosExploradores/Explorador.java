@@ -60,42 +60,42 @@ public class Explorador {
 		//Se o robo estiver abaixo do final
 		if (linhaRobo-linhaFinal > 0) {
 			if (podeSubir(arrayMapa1)){
-				subir(arrayMapa1);
+				arrayMapa1 = subir(arrayMapa1);
 
 			}else{
 				if (podeAndarEsquerda(arrayMapa1) ){
-					andarEsquerda(arrayMapa1);
+					arrayMapa1 = andarEsquerda(arrayMapa1);
 
 				}else if (podeAndarDireita(arrayMapa1)){
-					andarDireita(arrayMapa1);
+					arrayMapa1 = andarDireita(arrayMapa1);
 
 				}else if (podeDescer(arrayMapa1)){
-					descer(arrayMapa1);
+					arrayMapa1 = descer(arrayMapa1);
 				}
 			}
 		} else {
 			//Se o robo estiver a direita do final
 			if (colunaRobo-colunaFinal > 0) {
 				if(podeAndarEsquerda(arrayMapa1)){
-					andarEsquerda(arrayMapa1);
+					arrayMapa1 = andarEsquerda(arrayMapa1);
 				}else {
 					if(podeSubir(arrayMapa1)){
-						subir(arrayMapa1);						
+						arrayMapa1 = subir(arrayMapa1);						
 					}else{
 						if(podeDescer(arrayMapa1))
-							descer(arrayMapa1);
+							arrayMapa1 = descer(arrayMapa1);
 					}
 				}
 			} else {				
 				if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
-					descer(arrayMapa1);
+					arrayMapa1 = descer(arrayMapa1);
 				
 				}else if (podeAndarDireita(arrayMapa1))
-					andarDireita(arrayMapa1);
+					arrayMapa1 = andarDireita(arrayMapa1);
 				else if (podeSubir(arrayMapa1)){
-					subir(arrayMapa1);
+					arrayMapa1 = subir(arrayMapa1);
 				}else if (podeDescer(arrayMapa1))
-					descer(arrayMapa1);
+					arrayMapa1 = descer(arrayMapa1);
 			}
 		}
 		return true;
@@ -105,21 +105,29 @@ public class Explorador {
 		return !podeAndarDireita(arrayMapa1) && !podeAndarEsquerda(arrayMapa1) &&
 				!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
 	}
-	private void descer(char[][] arrayMapa1) {
-		arrayMapa1[linhaRobo][colunaRobo] = '*';
-		arrayMapa1[linhaRobo+1][colunaRobo] = 'R';
+	private char[][] descer(char[][] arrayMapa1) {
+		char[][] arrayMapa = arrayMapa1.clone();
+		arrayMapa[linhaRobo][colunaRobo] = '*';
+		arrayMapa[linhaRobo+1][colunaRobo] = 'R';
+		return arrayMapa;
 	}
-	private void andarDireita(char[][] arrayMapa1) {
-		arrayMapa1[linhaRobo][colunaRobo] = '*';
-		arrayMapa1[linhaRobo][colunaRobo+1] = 'R';
+	private char[][] andarDireita(char[][] arrayMapa1) {
+		char[][] arrayMapa = arrayMapa1.clone();
+		arrayMapa[linhaRobo][colunaRobo] = '*';
+		arrayMapa[linhaRobo][colunaRobo+1] = 'R';
+		return arrayMapa;
 	}
-	private void andarEsquerda(char[][] arrayMapa1) {
-		arrayMapa1[linhaRobo][colunaRobo] = '*';
-		arrayMapa1[linhaRobo][colunaRobo-1] = 'R';
+	private char[][] andarEsquerda(char[][] arrayMapa1) {
+		char[][] arrayMapa = arrayMapa1.clone();
+		arrayMapa[linhaRobo][colunaRobo] = '*';
+		arrayMapa[linhaRobo][colunaRobo-1] = 'R';
+		return arrayMapa;
 	}
-	private void subir(char[][] arrayMapa1) {
-		arrayMapa1[linhaRobo][colunaRobo] = '*';
-		arrayMapa1[linhaRobo-1][colunaRobo] = 'R';
+	private char[][] subir(char[][] arrayMapa1) {
+		char[][] arrayMapa = arrayMapa1.clone();
+		arrayMapa[linhaRobo][colunaRobo] = '*';
+		arrayMapa[linhaRobo-1][colunaRobo] = 'R';
+		return arrayMapa;
 	}
 	private boolean podeAndarDireita(char[][] arrayMapa1) {
 		return (colunaRobo+1) < arrayMapa1[0].length && arrayMapa1[linhaRobo][colunaRobo+1] == '.';
