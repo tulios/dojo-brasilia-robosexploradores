@@ -247,6 +247,33 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		assertEquals(6 , resultado);
 	}
 	
+	@Test
+	public void andarMapa_FXR_oXo_ooo(){
+		String mapa = 	"F # R \n"+
+						". # . \n"+
+						". . . \n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(6 , resultado);
+	}
+
+	@Test
+	public void andarMapa_RXXF_ooXo_XoXo_Xooo(){
+		String mapa = 	"R # # F \n"+
+						". . # . \n"+
+						"# . # . \n"+
+						"# . . . \n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(9 , resultado);
+	}
+	
 }
 
 
