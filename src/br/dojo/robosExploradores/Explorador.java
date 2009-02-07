@@ -73,7 +73,11 @@ public class Explorador {
 				if(podeAndarEsquerda()){
 					andarEsquerda();
 				}else {
-					subir();
+					if(podeSubir()){
+						subir();						
+					}else{
+						descer();
+					}
 				}
 			} else {
 				andarDireita();
