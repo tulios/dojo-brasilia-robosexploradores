@@ -1,5 +1,7 @@
 package br.dojo.robosExploradores;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 public class Explorador {
 	private int linha;
 	private int coluna;
@@ -49,96 +51,101 @@ public class Explorador {
 
 	}
 	
-	public boolean andar() {
+	public boolean andar(char[][] arrayMapa1) {
 		
-		if (!podeAndarDireita() && !podeAndarEsquerda() &&
-				!podeDescer() && !podeSubir()) {
+		if (naoPodeAndar(arrayMapa1)) {
 			return false;
 		}
 		
 		//Se o robo estiver abaixo do final
 		if (linhaRobo-linhaFinal > 0) {
-			if (podeSubir()){
-				subir();
+			if (podeSubir(arrayMapa1)){
+				subir(arrayMapa1);
 
 			}else{
-				if (podeAndarEsquerda() ){
-					andarEsquerda();
+				if (podeAndarEsquerda(arrayMapa1) ){
+					andarEsquerda(arrayMapa1);
 
-				}else if (podeAndarDireita()){
-					andarDireita();
+				}else if (podeAndarDireita(arrayMapa1)){
+					andarDireita(arrayMapa1);
 
-				}else if (podeDescer()){
-					descer();
+				}else if (podeDescer(arrayMapa1)){
+					descer(arrayMapa1);
 				}
 			}
 		} else {
 			//Se o robo estiver a direita do final
 			if (colunaRobo-colunaFinal > 0) {
-				if(podeAndarEsquerda()){
-					andarEsquerda();
+				if(podeAndarEsquerda(arrayMapa1)){
+					andarEsquerda(arrayMapa1);
 				}else {
-					if(podeSubir()){
-						subir();						
+					if(podeSubir(arrayMapa1)){
+						subir(arrayMapa1);						
 					}else{
-						if(podeDescer())
-							descer();
+						if(podeDescer(arrayMapa1))
+							descer(arrayMapa1);
 					}
 				}
 			} else {				
-				if (linhaRobo-linhaFinal < 0 && podeDescer()){
-					descer();
+				if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
+					descer(arrayMapa1);
 				
-				}else if (podeAndarDireita())
-					andarDireita();
-				else if (podeSubir()){
-					subir();
-				}else if (podeDescer())
-					descer();
+				}else if (podeAndarDireita(arrayMapa1))
+					andarDireita(arrayMapa1);
+				else if (podeSubir(arrayMapa1)){
+					subir(arrayMapa1);
+				}else if (podeDescer(arrayMapa1))
+					descer(arrayMapa1);
 			}
 		}
 		return true;
 		
 	}
-	private void descer() {
+	private boolean naoPodeAndar(char[][] arrayMapa1) {
+		return !podeAndarDireita(arrayMapa1) && !podeAndarEsquerda(arrayMapa1) &&
+				!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
+	}
+	private void descer(char[][] arrayMapa1) {
 		arrayMapa1[linhaRobo][colunaRobo] = '*';
 		arrayMapa1[linhaRobo+1][colunaRobo] = 'R';
 	}
-	private void andarDireita() {
+	private void andarDireita(char[][] arrayMapa1) {
 		arrayMapa1[linhaRobo][colunaRobo] = '*';
 		arrayMapa1[linhaRobo][colunaRobo+1] = 'R';
 	}
-	private void andarEsquerda() {
+	private void andarEsquerda(char[][] arrayMapa1) {
 		arrayMapa1[linhaRobo][colunaRobo] = '*';
 		arrayMapa1[linhaRobo][colunaRobo-1] = 'R';
 	}
-	private void subir() {
+	private void subir(char[][] arrayMapa1) {
 		arrayMapa1[linhaRobo][colunaRobo] = '*';
 		arrayMapa1[linhaRobo-1][colunaRobo] = 'R';
 	}
-	private boolean podeAndarDireita() {
+	private boolean podeAndarDireita(char[][] arrayMapa1) {
 		return (colunaRobo+1) < arrayMapa1[0].length && arrayMapa1[linhaRobo][colunaRobo+1] == '.';
 	}
-	private boolean podeAndarEsquerda() {
+	private boolean podeAndarEsquerda(char[][] arrayMapa1) {
 		return (colunaRobo-1) >= 0 && arrayMapa1[linhaRobo][colunaRobo-1] == '.';
 	}
-	private boolean podeSubir() {
+	private boolean podeSubir(char[][] arrayMapa1) {
 		return (linhaRobo - 1) >= 0 && arrayMapa1[linhaRobo-1][colunaRobo] == '.';
 	}
-	private boolean podeDescer() {
+	private boolean podeDescer(char[][] arrayMapa1) {
 		return (linhaRobo + 1) < arrayMapa1.length && arrayMapa1[linhaRobo+1][colunaRobo] == '.';
 	}
 	
 	public int explorarMapas() {
 		
-		int distancia = calculaDistancia();
+		int distancia = calculaDistancia(arrayMapa1);
 		
 		if (mapa1.contains("#")){			
 			if(distancia == 1){
 				return 1;
 			}
 			
-			if (!andar()) {
+			//nao posso andar
+			if (!andar(arrayMapa1)) {
+				//pego mapa original, quebro em varios
 				return -1;
 			}
 			
@@ -152,11 +159,11 @@ public class Explorador {
 		return distancia;
 	}
 	
-	private int calculaDistancia() {
-		localizarRoboEFinal();
+	private int calculaDistancia(char[][] arrayMapa1) {
+		localizarRoboEFinal(arrayMapa1);
 		return Math.abs(colunaFinal - colunaRobo)+Math.abs(linhaFinal-linhaRobo);
 	}
-	private void localizarRoboEFinal() {
+	private void localizarRoboEFinal(char[][] arrayMapa1) {
 		int qtdLinhas = arrayMapa1.length;			
 		int qtdColunas = arrayMapa1[0].length;
 		
