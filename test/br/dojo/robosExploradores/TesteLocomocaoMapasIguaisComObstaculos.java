@@ -326,6 +326,18 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		assertEquals(2 , resultado);
 	}
 	
+	@Test
+	public void andarMapaParaBecoSemSaida(){
+		String mapa = 	"R # . \n"+
+						". # # \n"+
+						". # F \n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(-1 , resultado);
+	}
 }
 
 

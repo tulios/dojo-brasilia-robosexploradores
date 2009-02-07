@@ -49,7 +49,12 @@ public class Explorador {
 
 	}
 	
-	public void andar() {
+	public boolean andar() {
+		
+		if (!podeAndarDireita() && !podeAndarEsquerda() &&
+				!podeDescer() && !podeSubir()) {
+			return false;
+		}
 		
 		//Se o robo estiver abaixo do final
 		if (linhaRobo-linhaFinal > 0) {
@@ -88,10 +93,11 @@ public class Explorador {
 					andarDireita();
 				else if (podeSubir()){
 					subir();
-				}else 
+				}else if (podeDescer())
 					descer();
 			}
 		}
+		return true;
 		
 	}
 	private void descer() {
@@ -130,11 +136,17 @@ public class Explorador {
 		if (mapa1.contains("#")){			
 			if(distancia == 1){
 				return 1;
-			}		
+			}
 			
-			andar();
+			if (!andar()) {
+				return -1;
+			}
 			
-			return explorarMapas()+1;
+			int valor = explorarMapas();
+			if (valor < 0){
+				return valor;
+			}
+			return valor+1;
 			
 		}
 		return distancia;
