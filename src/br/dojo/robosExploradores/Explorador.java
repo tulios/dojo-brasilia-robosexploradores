@@ -1,5 +1,9 @@
 package br.dojo.robosExploradores;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Explorador {
 	private int linha;
 	private int coluna;
@@ -7,10 +11,10 @@ public class Explorador {
 	private String mapa2;
 	private char[][] arrayMapa1;
 	private char[][] arrayMapa2;
-	
+
 	private int linhaRobo;
 	private int colunaRobo;
-	
+
 	private int colunaFinal;
 	private int linhaFinal;
 
@@ -48,78 +52,156 @@ public class Explorador {
 		this.arrayMapa2 = stringToArray(mapa2);
 
 	}
-	
+
 	public char[][] andar(char[][] arrayMapa1, Contador contador) {
-		
-		if (naoPodeAndar(arrayMapa1) && arrayMapa1 == null) {
+
+		if ((naoPodeAndar(arrayMapa1) && arrayMapa1 == null)) {
 			return null;
 		}
-		
+
 		int distancia = calculaDistancia(arrayMapa1);
 		if(distancia == 1){
 			contador.valor++;
 			return arrayMapa1;
 		}
-		
-		contador.valor++;
-		
-		//Se o robo estiver abaixo do final
-		if (linhaRobo-linhaFinal > 0) {
-			if (podeSubir(arrayMapa1)){
-				arrayMapa1 = andar(subir(arrayMapa1), contador);
 
-			}else{
-				if (podeAndarEsquerda(arrayMapa1) ){
-					arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
+		ArrayList<Boolean> caminhos = new ArrayList<Boolean>();
+		if(podeAndarEsquerda(arrayMapa1))
+			caminhos.add(true);
+		if(podeAndarDireita(arrayMapa1))
+			caminhos.add(true);
+		if(podeDescer(arrayMapa1))
+			caminhos.add(true);
+		if(podeSubir(arrayMapa1))
+			caminhos.add(true);
 
-				}else if (podeAndarDireita(arrayMapa1)){
-					arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
-
-				}else if (podeDescer(arrayMapa1)){
-					arrayMapa1 = andar(descer(arrayMapa1), contador);
-				}
+		if (caminhos.size() > 1){
+			//contador.valor++;
+			char[][] esquerda = null;
+			if(podeAndarEsquerda(arrayMapa1)){
+				esquerda = andarEsquerda(arrayMapa1); 
 			}
-		} else {
-			//Se o robo estiver a direita do final
-			if (colunaRobo-colunaFinal > 0) {
-				if(podeAndarEsquerda(arrayMapa1)){
-					arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
-					
-				}else {
-					if(podeSubir(arrayMapa1)){
-						arrayMapa1 = andar(subir(arrayMapa1), contador);
-					}else{
-						if(podeDescer(arrayMapa1)){
-							arrayMapa1 = andar(descer(arrayMapa1), contador);
-						}	
+			
+			char[][] direita = null;
+			if(podeAndarDireita(arrayMapa1)){
+				direita = andarDireita(arrayMapa1);
+			}
+			
+			char[][] baixo = null;
+			if(podeDescer(arrayMapa1)){
+				baixo = descer(arrayMapa1);
+			}
+
+			char[][] cima = null;
+			if(podeSubir(arrayMapa1)){
+				cima = subir(arrayMapa1);
+			}
+			
+			Contador cEsqueda = new Contador();
+			cEsqueda.valor = contador.valor;
+			Contador cDireita = new Contador();
+			cDireita.valor = contador.valor;
+			Contador cBaixo = new Contador();
+			cBaixo.valor = contador.valor;
+			Contador cCima = new Contador();
+			cCima.valor = contador.valor;
+			
+			if (esquerda != null){
+				cEsqueda.valor++;
+				esquerda = andar(esquerda, cEsqueda);
+			}	
+			if (direita != null){
+				cDireita.valor++;
+				direita = andar(direita, cDireita);
+			}	
+			if (baixo != null){
+				cBaixo.valor++;
+				baixo = andar(baixo, cBaixo);
+			}	
+			if (cima != null){
+				cCima.valor++;
+				cima = andar(cima, cCima);
+			}	
+			
+			List<Integer> list = new ArrayList<Integer>();
+			if (cEsqueda.valor != contador.valor && cEsqueda.valor > -1) list.add(cEsqueda.valor);
+			if (cDireita.valor != contador.valor && cDireita.valor > -1) list.add(cDireita.valor);
+			if (cBaixo.valor != contador.valor && cBaixo.valor > -1) list.add(cBaixo.valor);
+			if (cCima.valor != contador.valor && cCima.valor > -1) list.add(cCima.valor);
+			
+			Collections.sort(list);
+			contador.valor=list.get(0);
+			if (cEsqueda.valor == list.get(0) && cEsqueda.valor > 1){
+				return esquerda;
+			}else if (cDireita.valor == list.get(0) && cDireita.valor > 1){
+				return direita;
+			}else if (cBaixo.valor == list.get(0) && cBaixo.valor > 1){
+				return baixo;
+			}else if (cCima.valor > 1){
+				return cima;
+			}
+			
+			
+		}else{
+			contador.valor++;
+
+			//Se o robo estiver abaixo do final
+			if (linhaRobo-linhaFinal > 0) {
+				if (podeSubir(arrayMapa1)){
+					arrayMapa1 = andar(subir(arrayMapa1), contador);
+
+				}else{
+					if (podeAndarEsquerda(arrayMapa1) ){
+						arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
+
+					}else if (podeAndarDireita(arrayMapa1)){
+						arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
+
+					}else if (podeDescer(arrayMapa1)){
+						arrayMapa1 = andar(descer(arrayMapa1), contador);
 					}
 				}
-			} else {//se o robo estiver a esquerda do final
-				
-				//robo acima do final
-				if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
-					arrayMapa1 = andar(descer(arrayMapa1), contador);
-				
-				}else if (podeAndarDireita(arrayMapa1)){
-					arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
-				
-				}else if (podeSubir(arrayMapa1)){
-					arrayMapa1 = andar(subir(arrayMapa1), contador);
-					
-				}else if (podeDescer(arrayMapa1)){
-					arrayMapa1 = andar(descer(arrayMapa1), contador);
-				} else {
-					arrayMapa1 = null;
+			} else {
+				//Se o robo estiver a direita do final
+				if (colunaRobo-colunaFinal > 0) {
+					if(podeAndarEsquerda(arrayMapa1)){
+						arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
+
+					}else {
+						if(podeSubir(arrayMapa1)){
+							arrayMapa1 = andar(subir(arrayMapa1), contador);
+						}else{
+							if(podeDescer(arrayMapa1)){
+								arrayMapa1 = andar(descer(arrayMapa1), contador);
+							}	
+						}
+					}
+				} else {//se o robo estiver a esquerda do final
+
+					//robo acima do final
+					if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
+						arrayMapa1 = andar(descer(arrayMapa1), contador);
+
+					}else if (podeAndarDireita(arrayMapa1)){
+						arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
+
+					}else if (podeSubir(arrayMapa1)){
+						arrayMapa1 = andar(subir(arrayMapa1), contador);
+
+					}else if (podeDescer(arrayMapa1)){
+						arrayMapa1 = andar(descer(arrayMapa1), contador);
+					} else {
+						arrayMapa1 = null;
+					}
 				}
 			}
 		}
-			
 		return arrayMapa1;
-		
+
 	}
 	private boolean naoPodeAndar(char[][] arrayMapa1) {
 		return !podeAndarDireita(arrayMapa1) && !podeAndarEsquerda(arrayMapa1) &&
-				!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
+		!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
 	}
 	private char[][] descer(char[][] arrayMapa1) {
 		char[][] arrayMapa = arrayMapa1.clone();
@@ -157,29 +239,29 @@ public class Explorador {
 	private boolean podeDescer(char[][] arrayMapa1) {
 		return (linhaRobo + 1) < arrayMapa1.length && arrayMapa1[linhaRobo+1][colunaRobo] == '.';
 	}
-	
+
 	public int explorarMapas() {
-		
+
 		int distancia = calculaDistancia(arrayMapa1);
-		
+
 		if (mapa1.contains("#")){			
 			if(distancia == 1){
 				return 1;
 			}
-			
+
 			//nao posso andar
 			Contador obj = new Contador();
 			if (andar(arrayMapa1, obj) == null) {
 				//pego mapa original, quebro em varios
 				return -1;
 			}
-			
+
 			return obj.valor;
-			
+
 		}
 		return distancia;
 	}
-	
+
 	private int calculaDistancia(char[][] arrayMapa1) {
 		localizarRoboEFinal(arrayMapa1);
 		return Math.abs(colunaFinal - colunaRobo)+Math.abs(linhaFinal-linhaRobo);
@@ -187,7 +269,7 @@ public class Explorador {
 	private void localizarRoboEFinal(char[][] arrayMapa1) {
 		int qtdLinhas = arrayMapa1.length;			
 		int qtdColunas = arrayMapa1[0].length;
-		
+
 		for(int y=0; y < qtdColunas; y++ ){
 			for(int x=0; x < qtdLinhas; x++ ){
 				if(arrayMapa1[x][y] == 'R'){

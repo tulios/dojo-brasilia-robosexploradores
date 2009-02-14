@@ -338,7 +338,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		int resultado = e.explorarMapas();
 		assertEquals(-1 , resultado);
 	}
-	/*
+
 	@Test
 	public void andarMapaParaBecoSemSaida2(){
 		String mapa = 	"R . . \n"+
@@ -351,7 +351,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
 	}
-	*/
+	
 }
 
 
