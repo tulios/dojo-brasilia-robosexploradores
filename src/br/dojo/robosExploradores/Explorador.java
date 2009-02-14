@@ -49,46 +49,48 @@ public class Explorador {
 
 	}
 	
-	public char[][] andar(char[][] arrayMapa1, Contador obj) {
+	public char[][] andar(char[][] arrayMapa1, Contador contador) {
 		
 		if (naoPodeAndar(arrayMapa1) && arrayMapa1 == null) {
 			return null;
-		} 
+		}
+		
 		int distancia = calculaDistancia(arrayMapa1);
 		if(distancia == 1){
-			obj.valor++;
+			contador.valor++;
 			return arrayMapa1;
 		}
 		
-		obj.valor++;
+		contador.valor++;
+		
 		//Se o robo estiver abaixo do final
 		if (linhaRobo-linhaFinal > 0) {
 			if (podeSubir(arrayMapa1)){
-				arrayMapa1 = andar(subir(arrayMapa1), obj);
+				arrayMapa1 = andar(subir(arrayMapa1), contador);
 
 			}else{
 				if (podeAndarEsquerda(arrayMapa1) ){
-					arrayMapa1 = andar(andarEsquerda(arrayMapa1), obj);
+					arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
 
 				}else if (podeAndarDireita(arrayMapa1)){
-					arrayMapa1 = andar(andarDireita(arrayMapa1), obj);
+					arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
 
 				}else if (podeDescer(arrayMapa1)){
-					arrayMapa1 = andar(descer(arrayMapa1), obj);
+					arrayMapa1 = andar(descer(arrayMapa1), contador);
 				}
 			}
 		} else {
 			//Se o robo estiver a direita do final
 			if (colunaRobo-colunaFinal > 0) {
 				if(podeAndarEsquerda(arrayMapa1)){
-					arrayMapa1 = andar(andarEsquerda(arrayMapa1), obj);
+					arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
 					
 				}else {
 					if(podeSubir(arrayMapa1)){
-						arrayMapa1 = andar(subir(arrayMapa1), obj);
+						arrayMapa1 = andar(subir(arrayMapa1), contador);
 					}else{
 						if(podeDescer(arrayMapa1)){
-							arrayMapa1 = andar(descer(arrayMapa1), obj);
+							arrayMapa1 = andar(descer(arrayMapa1), contador);
 						}	
 					}
 				}
@@ -96,21 +98,22 @@ public class Explorador {
 				
 				//robo acima do final
 				if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
-					arrayMapa1 = andar(descer(arrayMapa1), obj);
+					arrayMapa1 = andar(descer(arrayMapa1), contador);
 				
 				}else if (podeAndarDireita(arrayMapa1)){
-					arrayMapa1 = andar(andarDireita(arrayMapa1), obj);
+					arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
 				
 				}else if (podeSubir(arrayMapa1)){
-					arrayMapa1 = andar(subir(arrayMapa1), obj);
+					arrayMapa1 = andar(subir(arrayMapa1), contador);
 					
 				}else if (podeDescer(arrayMapa1)){
-					arrayMapa1 = andar(descer(arrayMapa1), obj);
+					arrayMapa1 = andar(descer(arrayMapa1), contador);
 				} else {
 					arrayMapa1 = null;
 				}
 			}
 		}
+			
 		return arrayMapa1;
 		
 	}
