@@ -1,7 +1,5 @@
 package br.dojo.robosExploradores;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 public class Explorador {
 	private int linha;
 	private int coluna;
@@ -51,10 +49,10 @@ public class Explorador {
 
 	}
 	
-	public boolean andar(char[][] arrayMapa1) {
+	public char[][] andar(char[][] arrayMapa1) {
 		
 		if (naoPodeAndar(arrayMapa1)) {
-			return false;
+			return null;
 		}
 		
 		//Se o robo estiver abaixo do final
@@ -98,7 +96,7 @@ public class Explorador {
 					arrayMapa1 = descer(arrayMapa1);
 			}
 		}
-		return true;
+		return arrayMapa1;
 		
 	}
 	private boolean naoPodeAndar(char[][] arrayMapa1) {
@@ -152,7 +150,7 @@ public class Explorador {
 			}
 			
 			//nao posso andar
-			if (!andar(arrayMapa1)) {
+			if (andar(arrayMapa1) == null) {
 				//pego mapa original, quebro em varios
 				return -1;
 			}
