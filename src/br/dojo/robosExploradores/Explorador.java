@@ -49,51 +49,66 @@ public class Explorador {
 
 	}
 	
-	public char[][] andar(char[][] arrayMapa1) {
+	public char[][] andar(char[][] arrayMapa1, Contador obj) {
 		
-		if (naoPodeAndar(arrayMapa1)) {
+		if (naoPodeAndar(arrayMapa1) && arrayMapa1 == null) {
 			return null;
+		} 
+		int distancia = calculaDistancia(arrayMapa1);
+		if(distancia == 1){
+			obj.valor++;
+			return arrayMapa1;
 		}
 		
+		obj.valor++;
 		//Se o robo estiver abaixo do final
 		if (linhaRobo-linhaFinal > 0) {
 			if (podeSubir(arrayMapa1)){
-				arrayMapa1 = subir(arrayMapa1);
+				arrayMapa1 = andar(subir(arrayMapa1), obj);
 
 			}else{
 				if (podeAndarEsquerda(arrayMapa1) ){
-					arrayMapa1 = andarEsquerda(arrayMapa1);
+					arrayMapa1 = andar(andarEsquerda(arrayMapa1), obj);
 
 				}else if (podeAndarDireita(arrayMapa1)){
-					arrayMapa1 = andarDireita(arrayMapa1);
+					arrayMapa1 = andar(andarDireita(arrayMapa1), obj);
 
 				}else if (podeDescer(arrayMapa1)){
-					arrayMapa1 = descer(arrayMapa1);
+					arrayMapa1 = andar(descer(arrayMapa1), obj);
 				}
 			}
 		} else {
 			//Se o robo estiver a direita do final
 			if (colunaRobo-colunaFinal > 0) {
 				if(podeAndarEsquerda(arrayMapa1)){
-					arrayMapa1 = andarEsquerda(arrayMapa1);
+					arrayMapa1 = andar(andarEsquerda(arrayMapa1), obj);
+					
 				}else {
 					if(podeSubir(arrayMapa1)){
-						arrayMapa1 = subir(arrayMapa1);						
+						arrayMapa1 = andar(subir(arrayMapa1), obj);
 					}else{
-						if(podeDescer(arrayMapa1))
-							arrayMapa1 = descer(arrayMapa1);
+						if(podeDescer(arrayMapa1)){
+							arrayMapa1 = andar(descer(arrayMapa1), obj);
+						}	
 					}
 				}
-			} else {				
-				if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
-					arrayMapa1 = descer(arrayMapa1);
+			} else {//se o robo estiver a esquerda do final
 				
-				}else if (podeAndarDireita(arrayMapa1))
-					arrayMapa1 = andarDireita(arrayMapa1);
-				else if (podeSubir(arrayMapa1)){
-					arrayMapa1 = subir(arrayMapa1);
-				}else if (podeDescer(arrayMapa1))
-					arrayMapa1 = descer(arrayMapa1);
+				//robo acima do final
+				if (linhaRobo-linhaFinal < 0 && podeDescer(arrayMapa1)){
+					arrayMapa1 = andar(descer(arrayMapa1), obj);
+				
+				}else if (podeAndarDireita(arrayMapa1)){
+					arrayMapa1 = andar(andarDireita(arrayMapa1), obj);
+				
+				}else if (podeSubir(arrayMapa1)){
+					arrayMapa1 = andar(subir(arrayMapa1), obj);
+					
+				}else if (podeDescer(arrayMapa1)){
+					arrayMapa1 = andar(descer(arrayMapa1), obj);
+				} else {
+					arrayMapa1 = null;
+				}
 			}
 		}
 		return arrayMapa1;
@@ -150,16 +165,13 @@ public class Explorador {
 			}
 			
 			//nao posso andar
-			if (andar(arrayMapa1) == null) {
+			Contador obj = new Contador();
+			if (andar(arrayMapa1, obj) == null) {
 				//pego mapa original, quebro em varios
 				return -1;
 			}
 			
-			int valor = explorarMapas();
-			if (valor < 0){
-				return valor;
-			}
-			return valor+1;
+			return obj.valor;
 			
 		}
 		return distancia;
