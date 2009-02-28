@@ -13,6 +13,8 @@ public class Explorador {
 	private char[][] arrayMapa1;
 	private char[][] arrayMapa2;
 
+	private Contador resultFinal = new Contador(51);
+	
 	private int linhaRobo;
 	private int colunaRobo;
 
@@ -59,6 +61,9 @@ public class Explorador {
 		int distancia = calculaDistancia(arrayMapa1);
 		if(distancia == 1){
 			contador.valor++;
+			if (contador.valor < resultFinal.valor){
+				resultFinal.valor = contador.valor;
+			}
 			return arrayMapa1;
 		}
 
@@ -117,34 +122,6 @@ public class Explorador {
 			if (cima != null){
 				cCima.valor++;
 				cima = andar(cima, cCima);
-			}	
-
-			List<Integer> list = new ArrayList<Integer>();
-			if (esquerda != null && cEsqueda.valor != contador.valor) {
-				list.add(cEsqueda.valor);
-			}
-			if (direita != null && cDireita.valor != contador.valor) {
-				list.add(cDireita.valor);
-			}
-			if (baixo != null && cBaixo.valor != contador.valor) {
-				list.add(cBaixo.valor);
-			}
-			if (cima != null && cCima.valor != contador.valor) {
-				list.add(cCima.valor);
-			}
-
-			Collections.sort(list);
-			if (list.size() > 0) {
-				contador.valor=list.get(0);
-				if (esquerda != null && cEsqueda.valor == list.get(0)){
-					return esquerda;
-				}else if (direita != null && cDireita.valor == list.get(0)){
-					return direita;
-				}else if (baixo != null && cBaixo.valor == list.get(0)){
-					return baixo;
-				}else if (cima != null) {
-					return cima;
-				}
 			}
 
 		}else{
@@ -271,7 +248,7 @@ public class Explorador {
 				return -1;
 			}
 
-			return obj.valor;
+			return resultFinal.valor;
 
 		}
 		return distancia;
