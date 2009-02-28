@@ -141,13 +141,13 @@ public class Explorador {
 			Collections.sort(list);
 			if (list.size() > 0) {
 				contador.valor=list.get(0);
-				if (cEsqueda.valor == list.get(0) && cEsqueda.valor > 1){
+				if (esquerda != null && cEsqueda.valor == list.get(0)){
 					return esquerda;
-				}else if (cDireita.valor == list.get(0) && cDireita.valor > 1){
+				}else if (direita != null && cDireita.valor == list.get(0)){
 					return direita;
-				}else if (cBaixo.valor == list.get(0) && cBaixo.valor > 1){
+				}else if (baixo != null && cBaixo.valor == list.get(0)){
 					return baixo;
-				}else if (cCima.valor > 1){
+				}else if (cima != null) {
 					return cima;
 				}
 			}
