@@ -55,6 +55,21 @@
 
 3 – Leitura do arquivo (?)
 
+28/02/09
+2 – Locomoção
+	- Mapas iguais (estimado 6, realizado 7)
+	
+	- Mapas iguais com # e B (50)
+			Sem contorno (estimado 15, reestimado 20, realizado em 25)
+			com contorno (estimado 30, feito 28)
+	
+	- Mapas diferentes (estimado 10) (?)
+	
+	- Mapas diferentes com # e B (?)
+			Com # (?)
+			Com B (?)
+
+3 – Leitura do arquivo (?)
 
 
 
