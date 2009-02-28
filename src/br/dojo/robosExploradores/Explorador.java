@@ -1,6 +1,7 @@
 package br.dojo.robosExploradores;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -55,14 +56,14 @@ public class Explorador {
 
 	public char[][] andar(char[][] arrayMapa1, Contador contador) {
 
-		if ((naoPodeAndar(arrayMapa1) && arrayMapa1 == null)) {
-			return null;
-		}
-
 		int distancia = calculaDistancia(arrayMapa1);
 		if(distancia == 1){
 			contador.valor++;
 			return arrayMapa1;
+		}
+
+		if ((arrayMapa1 == null) || (naoPodeAndar(arrayMapa1))) {
+			return null;
 		}
 
 		ArrayList<Boolean> caminhos = new ArrayList<Boolean>();
@@ -81,12 +82,12 @@ public class Explorador {
 			if(podeAndarEsquerda(arrayMapa1)){
 				esquerda = andarEsquerda(arrayMapa1); 
 			}
-			
+
 			char[][] direita = null;
 			if(podeAndarDireita(arrayMapa1)){
 				direita = andarDireita(arrayMapa1);
 			}
-			
+
 			char[][] baixo = null;
 			if(podeDescer(arrayMapa1)){
 				baixo = descer(arrayMapa1);
@@ -96,7 +97,7 @@ public class Explorador {
 			if(podeSubir(arrayMapa1)){
 				cima = subir(arrayMapa1);
 			}
-			
+
 			Contador cEsqueda = new Contador();
 			cEsqueda.valor = contador.valor;
 			Contador cDireita = new Contador();
@@ -105,7 +106,7 @@ public class Explorador {
 			cBaixo.valor = contador.valor;
 			Contador cCima = new Contador();
 			cCima.valor = contador.valor;
-			
+
 			if (esquerda != null){
 				cEsqueda.valor++;
 				esquerda = andar(esquerda, cEsqueda);
@@ -122,26 +123,35 @@ public class Explorador {
 				cCima.valor++;
 				cima = andar(cima, cCima);
 			}	
-			
+
 			List<Integer> list = new ArrayList<Integer>();
-			if (cEsqueda.valor != contador.valor && cEsqueda.valor > -1) list.add(cEsqueda.valor);
-			if (cDireita.valor != contador.valor && cDireita.valor > -1) list.add(cDireita.valor);
-			if (cBaixo.valor != contador.valor && cBaixo.valor > -1) list.add(cBaixo.valor);
-			if (cCima.valor != contador.valor && cCima.valor > -1) list.add(cCima.valor);
-			
-			Collections.sort(list);
-			contador.valor=list.get(0);
-			if (cEsqueda.valor == list.get(0) && cEsqueda.valor > 1){
-				return esquerda;
-			}else if (cDireita.valor == list.get(0) && cDireita.valor > 1){
-				return direita;
-			}else if (cBaixo.valor == list.get(0) && cBaixo.valor > 1){
-				return baixo;
-			}else if (cCima.valor > 1){
-				return cima;
+			if (esquerda!=null && cEsqueda.valor != contador.valor) {
+				list.add(cEsqueda.valor);
 			}
-			
-			
+			if (direita!=null && cDireita.valor != contador.valor) {
+				list.add(cDireita.valor);
+			}
+			if (baixo!=null && cBaixo.valor != contador.valor) {
+				list.add(cBaixo.valor);
+			}
+			if (cima!=null && cCima.valor != contador.valor) {
+				list.add(cCima.valor);
+			}
+
+			Collections.sort(list);
+			if (list.size() > 0) {
+				contador.valor=list.get(0);
+				if (cEsqueda.valor == list.get(0) && cEsqueda.valor > 1){
+					return esquerda;
+				}else if (cDireita.valor == list.get(0) && cDireita.valor > 1){
+					return direita;
+				}else if (cBaixo.valor == list.get(0) && cBaixo.valor > 1){
+					return baixo;
+				}else if (cCima.valor > 1){
+					return cima;
+				}
+			}
+
 		}else{
 			contador.valor++;
 
@@ -204,29 +214,48 @@ public class Explorador {
 		!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
 	}
 	private char[][] descer(char[][] arrayMapa1) {
-		char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
+		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo+1][colunaRobo] = 'R';
 		return arrayMapa;
 	}
 	private char[][] andarDireita(char[][] arrayMapa1) {
-		char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
+		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo][colunaRobo+1] = 'R';
 		return arrayMapa;
 	}
 	private char[][] andarEsquerda(char[][] arrayMapa1) {
-		char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
+		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo][colunaRobo-1] = 'R';
 		return arrayMapa;
 	}
 	private char[][] subir(char[][] arrayMapa1) {
-		char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = arrayMapa1.clone();
+		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
+		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo-1][colunaRobo] = 'R';
 		return arrayMapa;
 	}
+	
+	private char[][] novoArray(char[][] array){
+		char[][] retorno = new char[array.length][array[0].length];
+		for (int x=0; x<array.length; x++){
+			for (int y=0; y<array[x].length; y++){
+				retorno[x][y] = array[x][y];
+			}
+		}
+		return retorno;
+	}
+	
 	private boolean podeAndarDireita(char[][] arrayMapa1) {
 		return (colunaRobo+1) < arrayMapa1[0].length && arrayMapa1[linhaRobo][colunaRobo+1] == '.';
 	}
