@@ -440,7 +440,6 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		assertEquals(4 , resultado);
 	}
 
-
 	@Test
 	public void andarMapasComQuatroPossibilidades4(){
 		String mapa = 	". . . . .\n"+
@@ -455,7 +454,68 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
 	}
+	
+	@Test
+	public void andarMapasComQuatroPossibilidades5(){
+		String mapa = 	". . . . .\n"+
+						". # . # .\n"+
+						". . R . .\n"+
+						". # . # .\n"+
+						". . . . F\n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(4 , resultado);
+	}
+	
+	@Test
+	public void andarMapasComQuatroPossibilidades6(){
+		String mapa = 	". F # . . .\n"+
+						". . . . # .\n"+
+						". # . . . .\n"+
+						". . # R . .\n"+
+						". . . . . .\n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(5 , resultado);
+	}
+	
+	@Test
+	public void andarMapasComDoisCaminhosPossiveisEDoisImpossiveis(){
+		String mapa = 	". . . # .\n"+
+						". # . # .\n"+
+						". . R . .\n"+
+						". # . # #\n"+
+						". . . . F\n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(4 , resultado);
+	}
 
+	@Test
+	public void andarMapasComUmCaminhoLongo(){
+		String mapa = 	". . . . .\n"+
+						". . # . .\n"+
+						". # . # .\n"+
+						". # R . .\n"+
+						". . # # #\n"+
+						". . . . F\n";
+		
+		Explorador e = new Explorador();
+		e.definirMapas(mapa, mapa);
+		
+		int resultado = e.explorarMapas();
+		assertEquals(18 , resultado);
+	}
+	
 }
 
 
