@@ -66,18 +66,17 @@ public class Explorador {
 			return null;
 		}
 
-		ArrayList<Boolean> caminhos = new ArrayList<Boolean>();
+		int multiplos = 0;
 		if(podeAndarEsquerda(arrayMapa1))
-			caminhos.add(true);
+			multiplos++;
 		if(podeAndarDireita(arrayMapa1))
-			caminhos.add(true);
+			multiplos++;
 		if(podeDescer(arrayMapa1))
-			caminhos.add(true);
+			multiplos++;
 		if(podeSubir(arrayMapa1))
-			caminhos.add(true);
+			multiplos++;
 
-		if (caminhos.size() > 1){
-			//contador.valor++;
+		if (multiplos > 1){
 			char[][] esquerda = null;
 			if(podeAndarEsquerda(arrayMapa1)){
 				esquerda = andarEsquerda(arrayMapa1); 
@@ -98,14 +97,10 @@ public class Explorador {
 				cima = subir(arrayMapa1);
 			}
 
-			Contador cEsqueda = new Contador();
-			cEsqueda.valor = contador.valor;
-			Contador cDireita = new Contador();
-			cDireita.valor = contador.valor;
-			Contador cBaixo = new Contador();
-			cBaixo.valor = contador.valor;
-			Contador cCima = new Contador();
-			cCima.valor = contador.valor;
+			Contador cEsqueda = new Contador(contador.valor);
+			Contador cDireita = new Contador(contador.valor);
+			Contador cBaixo = new Contador(contador.valor);
+			Contador cCima = new Contador(contador.valor);
 
 			if (esquerda != null){
 				cEsqueda.valor++;
@@ -125,16 +120,16 @@ public class Explorador {
 			}	
 
 			List<Integer> list = new ArrayList<Integer>();
-			if (esquerda!=null && cEsqueda.valor != contador.valor) {
+			if (esquerda != null && cEsqueda.valor != contador.valor) {
 				list.add(cEsqueda.valor);
 			}
-			if (direita!=null && cDireita.valor != contador.valor) {
+			if (direita != null && cDireita.valor != contador.valor) {
 				list.add(cDireita.valor);
 			}
-			if (baixo!=null && cBaixo.valor != contador.valor) {
+			if (baixo != null && cBaixo.valor != contador.valor) {
 				list.add(cBaixo.valor);
 			}
-			if (cima!=null && cCima.valor != contador.valor) {
+			if (cima != null && cCima.valor != contador.valor) {
 				list.add(cCima.valor);
 			}
 
@@ -214,32 +209,24 @@ public class Explorador {
 		!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
 	}
 	private char[][] descer(char[][] arrayMapa1) {
-		//char[][] arrayMapa = arrayMapa1.clone();
-		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
 		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo+1][colunaRobo] = 'R';
 		return arrayMapa;
 	}
 	private char[][] andarDireita(char[][] arrayMapa1) {
-		//char[][] arrayMapa = arrayMapa1.clone();
-		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
 		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo][colunaRobo+1] = 'R';
 		return arrayMapa;
 	}
 	private char[][] andarEsquerda(char[][] arrayMapa1) {
-		//char[][] arrayMapa = arrayMapa1.clone();
-		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
 		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo][colunaRobo-1] = 'R';
 		return arrayMapa;
 	}
 	private char[][] subir(char[][] arrayMapa1) {
-		//char[][] arrayMapa = arrayMapa1.clone();
-		//char[][] arrayMapa = Arrays.copyOf(arrayMapa1, arrayMapa1.length);
 		char[][] arrayMapa = novoArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo-1][colunaRobo] = 'R';
@@ -278,10 +265,9 @@ public class Explorador {
 				return 1;
 			}
 
-			//nao posso andar
 			Contador obj = new Contador();
 			if (andar(arrayMapa1, obj) == null) {
-				//pego mapa original, quebro em varios
+				//caso nao haja caminhos possiveis
 				return -1;
 			}
 
