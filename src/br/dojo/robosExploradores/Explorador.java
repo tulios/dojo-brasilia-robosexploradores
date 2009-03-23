@@ -1,5 +1,13 @@
 package br.dojo.robosExploradores;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Explorador {
 	private int linha;
 	private int coluna;
@@ -8,13 +16,18 @@ public class Explorador {
 	private char[][] arrayMapa1;
 	private char[][] arrayMapa2;
 
+	private int numeroInstancias;
+
 	private Contador resultFinal = new Contador(51);
-	
+
 	private int linhaRobo;
 	private int colunaRobo;
 
 	private int colunaFinal;
 	private int linhaFinal;
+
+	private List<String> instancias;
+	private int index;
 
 	public int getLinha() {
 		return linha;
@@ -144,14 +157,12 @@ public class Explorador {
 					if(podeAndarEsquerda(arrayMapa1)){
 						arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
 
-					}else {
-						if(podeSubir(arrayMapa1)){
-							arrayMapa1 = andar(subir(arrayMapa1), contador);
-						}else{
-							if(podeDescer(arrayMapa1)){
-								arrayMapa1 = andar(descer(arrayMapa1), contador);
-							}	
-						}
+					}else if(podeSubir(arrayMapa1)){
+						arrayMapa1 = andar(subir(arrayMapa1), contador);
+					}else if(podeDescer(arrayMapa1)){
+						arrayMapa1 = andar(descer(arrayMapa1), contador);
+					}else if(podeAndarDireita(arrayMapa1)) {
+						arrayMapa1 = andar(andarDireita(arrayMapa1), contador);
 					}
 				} else {//se o robo estiver a esquerda do final
 
@@ -167,7 +178,11 @@ public class Explorador {
 
 					}else if (podeDescer(arrayMapa1)){
 						arrayMapa1 = andar(descer(arrayMapa1), contador);
-					} else {
+
+					}else if (podeAndarEsquerda(arrayMapa1)){
+						arrayMapa1 = andar(andarEsquerda(arrayMapa1), contador);
+
+					}else {
 						arrayMapa1 = null;
 					}
 				}
@@ -204,7 +219,7 @@ public class Explorador {
 		arrayMapa[linhaRobo-1][colunaRobo] = 'R';
 		return arrayMapa;
 	}
-	
+
 	private char[][] novoArray(char[][] array){
 		char[][] retorno = new char[array.length][array[0].length];
 		for (int x=0; x<array.length; x++){
@@ -214,7 +229,7 @@ public class Explorador {
 		}
 		return retorno;
 	}
-	
+
 	private boolean podeAndarDireita(char[][] arrayMapa1) {
 		return (colunaRobo+1) < arrayMapa1[0].length && arrayMapa1[linhaRobo][colunaRobo+1] == '.';
 	}
@@ -243,7 +258,10 @@ public class Explorador {
 				return -1;
 			}
 
-			return resultFinal.valor;
+			if(resultFinal.valor>50)
+				return -1;
+			else
+				return resultFinal.valor;
 
 		}
 		return distancia;
@@ -284,6 +302,52 @@ public class Explorador {
 			}									
 		} 
 		return retorno;
+	}
+
+	public boolean lerArquivo(String arquivo) throws IOException {
+		FileReader fr = new FileReader(arquivo);
+		BufferedReader br = new BufferedReader(fr);
+
+		numeroInstancias = Integer.parseInt(br.readLine());
+
+		instancias = new ArrayList<String>();
+		String s = null;
+		while((s = br.readLine()) != null) {
+			instancias.add(s);
+		}
+		return true;
+	}
+
+	public int getNumeroInstancias() {
+		return numeroInstancias;
+	}
+
+	public boolean next() throws IOException {
+		if (index < instancias.size()){
+			String[] partes = instancias.get(index++).split(" ");
+
+			linha = Integer.parseInt(partes[0]);
+			coluna = Integer.parseInt(partes[1]);
+			mapa1="";
+			mapa2="";
+			
+			for (int i = 0; i < linha; i++) {
+				mapa1 += instancias.get(index++)+"\n";
+			}
+			for (int i = 0; i < linha; i++) {
+				mapa2 += instancias.get(index++)+"\n";
+			}
+			
+			definirMapas(mapa1, mapa2);
+			FileWriter fw = new FileWriter("resutadoExploracao");
+			int resultado = explorarMapas();
+			fw.write(String.valueOf(resultado));
+			fw.close();
+			
+			
+			return true;
+		}
+		return false;
 	}
 }
 

@@ -1,18 +1,18 @@
-2 – Locomoção
+2 ï¿½ Locomoï¿½ï¿½o
 	Mapas iguais (estimado 6, realizado 7)
-	Mapas iguais com # e B (estimado  4 reestimado 15 executado 3 (até agora))
+	Mapas iguais com # e B (estimado  4 reestimado 15 executado 3 (atï¿½ agora))
 	Mapas diferentes (estimado 10)
 	Mapas diferentes com # e B
 		Com #
 		Com B
-3 – Leitura do arquivo
+3 ï¿½ Leitura do arquivo
 
 31/01/09
-2 – Locomoção
+2 ï¿½ Locomoï¿½ï¿½o
 	- Mapas iguais (estimado 6, realizado 7)
 	
 	- Mapas iguais com # e B (50)
-			Sem contorno (estimado 15, feito 17 (até agora), reestimado 20)
+			Sem contorno (estimado 15, feito 17 (atï¿½ agora), reestimado 20)
 			com contorno (estimado 30)
 	
 	- Mapas diferentes (estimado 10) (?)
@@ -21,10 +21,10 @@
 			Com # (?)
 			Com B (?)
 
-3 – Leitura do arquivo (?)
+3 ï¿½ Leitura do arquivo (?)
 
 07/02/09
-2 – Locomoção
+2 ï¿½ Locomoï¿½ï¿½o
 	- Mapas iguais (estimado 6, realizado 7)
 	
 	- Mapas iguais com # e B (50)
@@ -37,10 +37,10 @@
 			Com # (?)
 			Com B (?)
 
-3 – Leitura do arquivo (?)
+3 ï¿½ Leitura do arquivo (?)
 
 14/02/09
-2 – Locomoção
+2 ï¿½ Locomoï¿½ï¿½o
 	- Mapas iguais (estimado 6, realizado 7)
 	
 	- Mapas iguais com # e B (50)
@@ -53,10 +53,10 @@
 			Com # (?)
 			Com B (?)
 
-3 – Leitura do arquivo (?)
+3 ï¿½ Leitura do arquivo (?)
 
 28/02/09
-2 – Locomoção
+2 ï¿½ Locomoï¿½ï¿½o
 	- Mapas iguais (estimado 6, realizado 7)
 	
 	- Mapas iguais com # e B (50)
@@ -69,7 +69,40 @@
 			Com # (?)
 			Com B (?)
 
-3 – Leitura do arquivo (?)
+3 ï¿½ Leitura do arquivo (?)
 
 
+14/03/09
+2 ï¿½ Locomoï¿½ï¿½o
+	- Mapas iguais (estimado 6, realizado 7)
+	
+	- Mapas iguais com # e B (estimado 50, realizado 61)
+			Sem contorno (estimado 15, reestimado 20, realizado em 25)
+			Com contorno (estimado 30, realizado 36)
+	
+	- Mapas diferentes (estimado 10) (?)
+	
+	- Mapas diferentes com # e B (?)
+			Com # (?)
+			Com B (?)
 
+3 ï¿½ Leitura do arquivo (?)
+
+
+21/03/09
+2 ï¿½ Locomoï¿½ï¿½o
+	- Mapas iguais (estimado 6, realizado 7)
+	
+	- Mapas iguais com # e B (estimado 50, realizado 61)
+			Sem contorno (estimado 15, reestimado 20, realizado em 25)
+			Com contorno (estimado 30, realizado 36)
+	
+	- Mapas diferentes (estimado 10) (?)
+	
+	- Mapas diferentes com # e B (?)
+			Com # (?)
+			Com B (?)
+
+3 ï¿½ Leitura do arquivo (estimado 5)
+	- Leitura e interpretaÃ§Ã£o (estimado 4, realizado 11)
+	- Arquivo de saÃ­da (estimado 1, reestimado 4, realizado 2)
