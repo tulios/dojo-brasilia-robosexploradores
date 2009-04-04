@@ -289,7 +289,7 @@ public class Explorador {
 		}
 	}
 
-	public static char[][] stringToArray(String mapa) {
+	private char[][] stringToArray(String mapa) {
 		mapa = mapa.replaceAll(" ", "");
 		String[] linhas = mapa.split("\n");
 

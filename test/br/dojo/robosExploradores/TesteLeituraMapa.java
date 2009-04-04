@@ -16,34 +16,13 @@ public class TesteLeituraMapa {
 	}
 	
 	@Test
-	public void verificaDefinicaoMapas(){
-		String mapa1 = ". . . .\n"+
-					   ". . . .\n"+
-					   ". . . F\n"+
-					   ". . # R";
-		
-		String mapa2 = ". . . .\n"+
-		   			   ". . . .\n"+
-		   			   ". F B B\n"+
-		   			   "# . . R";
-		
-		Explorador explorador = new Explorador();
-		explorador.definirMapas(mapa1, mapa2);
-		
-		assertTrue(explorador.getMapa1().equals(mapa1));
-		assertTrue(explorador.getMapa2().equals(mapa2));		
-	}
-	
-	
-	
-	@Test
 	public void mapaDeStringParaArray(){
 		String mapa =  ". . . .\n"+
 		   			   ". . . .\n"+
 		   			   ". F B B\n"+
 		   			   "# . . R";
 		
-		char[][] array = Explorador.stringToArray(mapa);
+		char[][] array = stringToArray(mapa);
 		assertEquals(4, array.length);
 		assertEquals(4, array[0].length);
 		
@@ -66,7 +45,7 @@ public class TesteLeituraMapa {
 		   			   "# . . R #\n"+
 		   			   ". # # # #";
 		
-		char[][] array = Explorador.stringToArray(mapa);
+		char[][] array = stringToArray(mapa);
 		assertEquals(5, array.length);
 		assertEquals(5, array[0].length);
 		
@@ -91,7 +70,7 @@ public class TesteLeituraMapa {
 		   			   "# . . . #\n"+
 		   			   ". # # # #";
 		
-		char[][] array = Explorador.stringToArray(mapa);
+		char[][] array = stringToArray(mapa);
 		assertEquals(6, array.length);
 		assertEquals(5, array[5].length);
 		
@@ -108,43 +87,21 @@ public class TesteLeituraMapa {
 		}
 		
 	}
-	/*
-	@Test
-	public void explorarMapas1(){
-		String mapa1 = ". . . .\n"+
-		". . . .\n"+
-		". . . F\n"+
-		". . # R";
-		
-		String mapa2 = ". . . .\n"+
-		". . . .\n"+
-		". F B B\n"+
-		"# . . R";
-		
-		Explorador explorador = new Explorador();
-		explorador.definirMapas(mapa1, mapa2);		
-		assertEquals(3, explorador.explorarMapas());				
+
+	private static char[][] stringToArray(String mapa) {
+		mapa = mapa.replaceAll(" ", "");
+		String[] linhas = mapa.split("\n");
+
+		char [][] retorno = new char[linhas.length][linhas[0].length()];
+
+
+		for (int x=0; x<linhas.length; x++){
+			for (int y = 0; y < linhas[0].length(); y++){
+				retorno[x][y] = linhas[x].charAt(y);
+			}									
+		} 
+		return retorno;
 	}
-	*/
-	
-	/*
-	@Test
-	public void explorarMapas2(){
-		String mapa1 = ". B F B\n"+
-					   ". . . #\n"+
-					   ". # B B\n"+
-					   ". . . R";
-		
-		String mapa2 = "# # # #\n"+
-		   			   ". B B F\n"+
-		   			   ". . . .\n"+
-		   			   "# R . .";
-		
-		Explorador explorador = new Explorador();
-		explorador.definirMapas(mapa1, mapa2);		
-		assertEquals(12, explorador.explorarMapas());
-	}
-	*/
 }
 
 
