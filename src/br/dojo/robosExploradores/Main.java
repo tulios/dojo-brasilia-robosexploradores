@@ -9,8 +9,8 @@ public class Main {
 			if (args != null && args.length > 0){
 				Explorador e = new Explorador();
 				e.lerArquivo(args[0]);
-
-				while(e.next()){
+				
+				for (int x=0; x<e.getNumeroInstancias(); x++){
 					e.explorarMapas();
 				}
 			}

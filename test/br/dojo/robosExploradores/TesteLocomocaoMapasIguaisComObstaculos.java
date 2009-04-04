@@ -1,12 +1,14 @@
 package br.dojo.robosExploradores;
 
+import java.io.IOException;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TesteLocomocaoMapasIguaisComObstaculos {
 
 	@Test
-	public void andarMapa_oF_oX_oR(){
+	public void andarMapa_oF_oX_oR() throws IOException{
 		String mapa = 	". F \n" +
 		". # \n" +
 		". R \n";
@@ -19,7 +21,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oF_oX_Ro(){
+	public void andarMapa_oF_oX_Ro() throws IOException{
 		String mapa = 	". F \n" +
 		". # \n" +
 		"R . \n";
@@ -33,7 +35,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 
 
 	@Test
-	public void andarMapa_RF_oX_oo(){
+	public void andarMapa_RF_oX_oo() throws IOException{
 		String mapa = 	"R F \n" +
 		". # \n" +
 		". . \n";
@@ -46,7 +48,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oF_RX_oo(){
+	public void andarMapa_oF_RX_oo() throws IOException{
 		String mapa = 	". F \n" +
 		"R # \n" +
 		". . \n";
@@ -59,7 +61,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oF_Xo_Ro(){
+	public void andarMapa_oF_Xo_Ro() throws IOException{
 		String mapa = 	"F . \n" +
 		"# . \n" +
 		"R . \n";
@@ -72,7 +74,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFo_oXo_oRo(){
+	public void andarMapa_oFo_oXo_oRo() throws IOException{
 		String mapa = 	". F . \n" +
 		". # . \n" +
 		". R . \n";
@@ -85,7 +87,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFo_oXo_ooR(){
+	public void andarMapa_oFo_oXo_ooR() throws IOException{
 		String mapa = 	". F . \n" +
 		". # . \n" +
 		". . R \n";
@@ -98,7 +100,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFo_oXX_ooR(){
+	public void andarMapa_oFo_oXX_ooR() throws IOException{
 		String mapa = 	". F . \n" +
 		". # # \n" +
 		". . R \n";
@@ -111,7 +113,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFo_XXo_Roo(){
+	public void andarMapa_oFo_XXo_Roo() throws IOException{
 		String mapa = 	". F . \n" +
 		"# # . \n" +
 		"R . . \n";
@@ -124,7 +126,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFX_oXo_oRo(){
+	public void andarMapa_oFX_oXo_oRo() throws IOException{
 		String mapa = 	". F # \n" +
 		". # . \n" +
 		". R . \n";
@@ -137,7 +139,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_XFo_RXo_ooo(){
+	public void andarMapa_XFo_RXo_ooo() throws IOException{
 		String mapa = 	"# F . \n" +
 		"R # . \n" +
 		". . . \n";
@@ -150,7 +152,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFX_oXR_ooo(){
+	public void andarMapa_oFX_oXR_ooo() throws IOException{
 		String mapa = 	". F # \n" +
 		". # R \n" +
 		". . . \n";
@@ -164,7 +166,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 
 
 	@Test
-	public void andarMapa_oXo_RoF(){
+	public void andarMapa_oXo_RoF() throws IOException{
 		String mapa = 	". # . \n" +
 		"R . F \n" ;
 
@@ -176,7 +178,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oXo_FoR(){
+	public void andarMapa_oXo_FoR() throws IOException{
 		String mapa = 	". # . \n" +
 		"F . R \n" ;
 
@@ -188,7 +190,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_ooo_FXR(){
+	public void andarMapa_ooo_FXR() throws IOException{
 		String mapa = 	". . . \n" +
 		"F # R \n" ;
 
@@ -199,7 +201,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		assertEquals(4 , resultado);
 	}
 	@Test
-	public void andarMapa_FXR_ooo(){
+	public void andarMapa_FXR_ooo() throws IOException{
 		String mapa = 	"F # R \n"+
 		". . . \n" ;
 
@@ -211,7 +213,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RXF_ooo(){
+	public void andarMapa_RXF_ooo() throws IOException{
 		String mapa = 	"R # F \n"+
 					    ". . . \n" ;
 
@@ -223,7 +225,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_ooo_RXF(){
+	public void andarMapa_ooo_RXF() throws IOException{
 		String mapa = 	". . . \n"+
 		"R # F \n";
 
@@ -235,7 +237,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RXF_oXo_ooo(){
+	public void andarMapa_RXF_oXo_ooo() throws IOException{
 		String mapa = 	"R # F \n"+
 		". # . \n"+
 		". . . \n";
@@ -248,7 +250,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_FXR_oXo_ooo(){
+	public void andarMapa_FXR_oXo_ooo() throws IOException{
 		String mapa = 	"F # R \n"+
 		". # . \n"+
 		". . . \n";
@@ -261,7 +263,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RXXF_ooXo_XoXo_Xooo(){
+	public void andarMapa_RXXF_ooXo_XoXo_Xooo() throws IOException{
 		String mapa = 	"R # # F \n"+
 		". . # . \n"+
 		"# . # . \n"+
@@ -275,7 +277,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RoX_XoX_ooF(){
+	public void andarMapa_RoX_XoX_ooF() throws IOException{
 		String mapa = 	"R . # \n"+
 		"# . # \n"+
 		". . F \n";
@@ -288,7 +290,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RoX_XoX_Foo(){
+	public void andarMapa_RoX_XoX_Foo() throws IOException{
 		String mapa = 	"R . # \n"+
 		"# . # \n"+
 		"F . . \n";
@@ -301,7 +303,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RoX_Xoo_Foo(){
+	public void andarMapa_RoX_Xoo_Foo() throws IOException{
 		String mapa = 	"R . # \n"+
 		". . . \n"+
 		"F . . \n";
@@ -314,7 +316,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RoF_ooo_xoo(){
+	public void andarMapa_RoF_ooo_xoo() throws IOException{
 		String mapa = 	"R . F \n"+
 		". . . \n"+
 		"# . . \n";
@@ -327,7 +329,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapaParaBecoSemSaida1(){
+	public void andarMapaParaBecoSemSaida1() throws IOException{
 		String mapa = 	"R # . \n"+
 		". # # \n"+
 		". # F \n";
@@ -340,7 +342,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapaParaBecoSemSaida2(){
+	public void andarMapaParaBecoSemSaida2() throws IOException{
 		String mapa = 	"R . . \n"+
 		". # . \n"+
 		". # F \n";
@@ -353,7 +355,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasDoisCaminhosPossiveis(){
+	public void andarMapasDoisCaminhosPossiveis() throws IOException{
 		String mapa = 	". F . .\n"+
 						". # # .\n"+
 						". # # .\n"+
@@ -367,7 +369,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasDoisCaminhosPossiveis2(){
+	public void andarMapasDoisCaminhosPossiveis2() throws IOException{
 		String mapa = 	". . F .\n"+
 						". # # .\n"+
 						". # # .\n"+
@@ -381,7 +383,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasDoisCaminhosPossiveis3(){
+	public void andarMapasDoisCaminhosPossiveis3() throws IOException{
 		String mapa = 	". F . \n"+
 						". # .\n"+
 						". # . \n"+
@@ -395,7 +397,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasComQuatroPossibilidades(){
+	public void andarMapasComQuatroPossibilidades() throws IOException{
 		String mapa = 	"F . . . .\n"+
 						". # . # .\n"+
 						". . R . .\n"+
@@ -410,7 +412,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasComQuatroPossibilidades2(){
+	public void andarMapasComQuatroPossibilidades2() throws IOException{
 		String mapa = 	". . . . F\n"+
 						". # . # .\n"+
 						". . R . .\n"+
@@ -426,7 +428,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	
 
 	@Test
-	public void andarMapasComQuatroPossibilidades3(){
+	public void andarMapasComQuatroPossibilidades3() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". # . # .\n"+
 						". . R . .\n"+
@@ -441,7 +443,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasComQuatroPossibilidades4(){
+	public void andarMapasComQuatroPossibilidades4() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". # . # .\n"+
 						". . R . .\n"+
@@ -456,7 +458,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComQuatroPossibilidades5(){
+	public void andarMapasComQuatroPossibilidades5() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". # . # .\n"+
 						". . R . .\n"+
@@ -471,7 +473,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComQuatroPossibilidades6(){
+	public void andarMapasComQuatroPossibilidades6() throws IOException{
 		String mapa = 	". F # . . .\n"+
 						". . . . # .\n"+
 						". # . . . .\n"+
@@ -486,7 +488,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComDoisCaminhosPossiveisEDoisImpossiveis(){
+	public void andarMapasComDoisCaminhosPossiveisEDoisImpossiveis() throws IOException{
 		String mapa = 	". . . # .\n"+
 						". # . # .\n"+
 						". . R . .\n"+
@@ -501,7 +503,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 
 	@Test
-	public void andarMapasComUmCaminhoLongo(){
+	public void andarMapasComUmCaminhoLongo() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". . # . .\n"+
 						". # . # .\n"+
@@ -517,7 +519,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComUmCaminhoLongoInvertido(){
+	public void andarMapasComUmCaminhoLongoInvertido() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". . # . .\n"+
 						". # . # .\n"+
@@ -533,7 +535,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComUmCaminhoLongoAlterado(){
+	public void andarMapasComUmCaminhoLongoAlterado() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". . # . .\n"+
 						". # . # .\n"+
@@ -549,7 +551,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComVariosCaminhos(){
+	public void andarMapasComVariosCaminhos() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". . # . .\n"+
 						". # . # .\n"+
@@ -565,7 +567,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasSemCaminhosPOssiveis(){
+	public void andarMapasSemCaminhosPOssiveis() throws IOException{
 		String mapa = 	". . . . .\n"+
 						". . # . .\n"+
 						". # . # .\n"+
@@ -581,7 +583,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 	}
 	
 	@Test
-	public void andarMapasComBuracos(){
+	public void andarMapasComBuracos() throws IOException{
 		String mapa = 	". B F B\n"+
 						". . . #\n"+
 						". # B B\n"+

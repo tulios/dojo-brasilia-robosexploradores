@@ -1,12 +1,14 @@
 package br.dojo.robosExploradores;
 
+import java.io.IOException;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TesteLocomocaoMapasIguaisSemObstaculos {
 	
 	@Test
-	public void andarMapa_RF(){
+	public void andarMapa_RF() throws IOException{
 		String mapa = "R F";
 
 		Explorador e = new Explorador();
@@ -17,7 +19,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RoF(){
+	public void andarMapa_RoF() throws IOException{
 		String mapa = "R . F";
 		
 		Explorador e = new Explorador();
@@ -28,7 +30,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 
 	@Test
-	public void andarMapa_RooF(){
+	public void andarMapa_RooF() throws IOException{
 		String mapa = "R . . F";
 		
 		Explorador e = new Explorador();
@@ -39,7 +41,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_RoooooF(){
+	public void andarMapa_RoooooF() throws IOException{
 		String mapa = "R . . . . . F";
 		
 		Explorador e = new Explorador();
@@ -50,7 +52,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oRF(){
+	public void andarMapa_oRF() throws IOException{
 		String mapa = ". R F";
 		
 		Explorador e = new Explorador();
@@ -61,7 +63,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 
 	@Test
-	public void andarMapa_oFR(){
+	public void andarMapa_oFR() throws IOException{
 		String mapa = ". F R";
 		
 		Explorador e = new Explorador();
@@ -72,7 +74,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_oFoR(){
+	public void andarMapa_oFoR() throws IOException{
 		String mapa = ". F . R";
 		
 		Explorador e = new Explorador();
@@ -83,7 +85,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_R_F(){
+	public void andarMapa_R_F() throws IOException{
 		String mapa = 	"R\n" +
 						"F";
 		
@@ -95,7 +97,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_R_o_F(){
+	public void andarMapa_R_o_F() throws IOException{
 		String mapa = 	"R\n" +
 						".\n"   +
 						"F";
@@ -109,7 +111,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_R_o_o_F(){
+	public void andarMapa_R_o_o_F() throws IOException{
 		String mapa = 	"R\n" +
 						".\n" +
 						".\n" +
@@ -124,7 +126,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_R_o_F_o(){
+	public void andarMapa_R_o_F_o() throws IOException{
 		String mapa = 	"R\n" +
 						".\n" +
 						"F\n" +
@@ -139,7 +141,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_F_o_R_o(){
+	public void andarMapa_F_o_R_o() throws IOException{
 		String mapa = 	"F\n" +
 						".\n" +
 						"R\n" +
@@ -154,7 +156,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_F_o_o_o_R_o_o(){
+	public void andarMapa_F_o_o_o_R_o_o() throws IOException{
 		String mapa = 	"F\n" +
 						".\n" +
 						".\n" +
@@ -172,7 +174,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapa_oF_Ro(){
+	public void andarMapa_oF_Ro() throws IOException{
 		String mapa = 	". F\n" +
 						"R .";
 		
@@ -185,7 +187,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapaComplexo(){
+	public void andarMapaComplexo() throws IOException{
 		String mapa = 	". . . . .\n" +
 						". F . . .\n" +
 						". . . . .\n" +
@@ -200,7 +202,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 
 	@Test
-	public void andarMapaComplexo2(){
+	public void andarMapaComplexo2() throws IOException{
 		String mapa = 	". . . . .\n" +
 						". F . . .\n" +
 						". . R . .\n" +
@@ -215,7 +217,7 @@ public class TesteLocomocaoMapasIguaisSemObstaculos {
 	}
 	
 	@Test
-	public void andarMapaComplexo3(){
+	public void andarMapaComplexo3() throws IOException{
 		String mapa = 	". . . . .\n" +
 						". R . . .\n" +
 						". . . . .\n" +

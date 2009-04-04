@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.org.apache.bcel.internal.generic.SALOAD;
+
 public class Explorador {
 
 	private String mapa1;
@@ -25,10 +27,8 @@ public class Explorador {
 	private int colunaFinal;
 	private int linhaFinal;
 
-	private List<String> instancias;
+	private List<String> instancias = new ArrayList<String>();
 	private int index;
-
-	
 
 	public String getMapa1() {
 		return mapa1;
@@ -231,8 +231,9 @@ public class Explorador {
 		return (linhaRobo + 1) < arrayMapa1.length && arrayMapa1[linhaRobo+1][colunaRobo] == '.';
 	}
 
-	public int explorarMapas() {
-
+	public int explorarMapas() throws IOException {
+		prepararInstancia();
+		
 		int distancia = calculaDistancia(arrayMapa1);
 
 		if (mapa1.contains("#")){			
@@ -252,6 +253,7 @@ public class Explorador {
 				return resultFinal.valor;
 
 		}
+		gerarArquivoSaida(distancia);
 		return distancia;
 	}
 
@@ -301,7 +303,6 @@ public class Explorador {
 		
 		numeroInstancias = Integer.parseInt(br.readLine());
 
-		instancias = new ArrayList<String>();
 		String s = null;
 		while((s = br.readLine()) != null) {
 			instancias.add(s);
@@ -317,12 +318,11 @@ public class Explorador {
 		return numeroInstancias;
 	}
 
-	public boolean next() throws IOException {
+	private void prepararInstancia(){
 		if (index < instancias.size()){
 			String[] partes = instancias.get(index++).split(" ");
 
 			int linha = Integer.parseInt(partes[0]);
-			int coluna = Integer.parseInt(partes[1]);
 			mapa1="";
 			mapa2="";
 			
@@ -334,15 +334,12 @@ public class Explorador {
 			}
 			
 			definirMapas(mapa1, mapa2);
-			int resultado = explorarMapas();
-			
-			FileWriter fw = new FileWriter("resultadoExploracao", true);
-			fw.append(String.valueOf(resultado)+"\n");
-			fw.close();
-						
-			return true;
 		}
-		return false;
+	}
+	private void gerarArquivoSaida(int resultado) throws IOException{
+		FileWriter fw = new FileWriter("resultadoExploracao", true);
+		fw.append(String.valueOf(resultado)+"\n");
+		fw.close();
 	}
 }
 

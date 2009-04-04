@@ -29,7 +29,7 @@ public class TesteLeituraDeArquivo {
 				
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
-		explorador.next();
+		explorador.explorarMapas();
 		
 		String mapa = ".\n";
 		assertEquals(mapa, explorador.getMapa1());
@@ -42,7 +42,7 @@ public class TesteLeituraDeArquivo {
 				
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste2"));
 		assertEquals(2, explorador.getNumeroInstancias());
-		explorador.next();
+		explorador.explorarMapas();
 		
 		String mapa = "..\n"+
 					  "..\n";
@@ -57,14 +57,14 @@ public class TesteLeituraDeArquivo {
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste3"));
 		assertEquals(2, explorador.getNumeroInstancias());
 
-		explorador.next();
+		explorador.explorarMapas();
 		
 		String mapa = ".\n";
 
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 		
-		explorador.next();
+		explorador.explorarMapas();
 		mapa = "..\n"+
 			   "..\n";
 			   
@@ -81,14 +81,14 @@ public class TesteLeituraDeArquivo {
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste4"));
 		assertEquals(3, explorador.getNumeroInstancias());
 
-		explorador.next();
+		explorador.explorarMapas();
 		
 		String mapa = ".\n";
 
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 		
-		explorador.next();
+		explorador.explorarMapas();
 		mapa = "..\n"+
 			   "..\n";
 			   
@@ -96,7 +96,7 @@ public class TesteLeituraDeArquivo {
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 		
-		explorador.next();
+		explorador.explorarMapas();
 		mapa = "...\n"+
 			   "...\n"+
 			   "...\n";
@@ -113,14 +113,12 @@ public class TesteLeituraDeArquivo {
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
 
-		explorador.next();
+		explorador.explorarMapas();
 		
 		String mapa = ".\n";
 
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
-		
-		assertTrue(explorador.next() == false);
 	}
 	
 	@Test
@@ -130,7 +128,7 @@ public class TesteLeituraDeArquivo {
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste5"));
 		assertEquals(1, explorador.getNumeroInstancias());
 
-		explorador.next();
+		explorador.explorarMapas();
 		
 		String mapa = ".\n"+
 					  ".\n"+
@@ -138,8 +136,6 @@ public class TesteLeituraDeArquivo {
 
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
-		
-		assertTrue(explorador.next() == false);
 	}
 }
 

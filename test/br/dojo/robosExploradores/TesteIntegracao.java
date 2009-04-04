@@ -15,7 +15,6 @@ public class TesteIntegracao {
 		Explorador e = new Explorador();
 		e.lerArquivo("Arquivos-Teste/mapaIntegracao1");
 		
-		e.next();
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 		
@@ -26,11 +25,10 @@ public class TesteIntegracao {
 		Explorador e = new Explorador();
 		e.lerArquivo("Arquivos-Teste/mapaIntegracao2");
 		
-		e.next();
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 		
-		e.next();
+		
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 	}
@@ -40,11 +38,11 @@ public class TesteIntegracao {
 		Explorador e = new Explorador();
 		e.lerArquivo("Arquivos-Teste/mapaIntegracao2");
 		
-		e.next();
+		
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 		
-		e.next();
+		
 		
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
@@ -64,15 +62,15 @@ public class TesteIntegracao {
 		Explorador e = new Explorador();
 		e.lerArquivo("Arquivos-Teste/mapaIntegracao3");
 		
-		e.next();
+		
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 		
-		e.next();
+		
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 		
-		e.next();
+		
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 		
