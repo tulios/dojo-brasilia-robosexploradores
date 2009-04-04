@@ -47,9 +47,45 @@ public class TesteIntegracao {
 		assertEquals(1, resultado);
 		
 		e.next();
+		
 		resultado = e.explorarMapas();
+		assertEquals(2, resultado);
+		
 		FileReader fr = new FileReader("resutadoExploracao");
 		BufferedReader br = new BufferedReader(fr);
+		
+		assertEquals("1", br.readLine());
 		assertEquals("2", br.readLine());
+		
+		fr.close();
+		br.close();
+	}
+	
+	@Test
+	public void testaEntradaSaidaMapaComTresInstancias() throws IOException{
+		Explorador e = new Explorador();
+		e.lerArquivo("mapaIntegracao3");
+		
+		e.next();
+		int resultado = e.explorarMapas();
+		assertEquals(1, resultado);
+		
+		e.next();
+		resultado = e.explorarMapas();
+		assertEquals(2, resultado);
+		
+		e.next();
+		resultado = e.explorarMapas();
+		assertEquals(2, resultado);
+		
+		FileReader fr = new FileReader("resutadoExploracao");
+		BufferedReader br = new BufferedReader(fr);
+		
+		assertEquals("1", br.readLine());
+		assertEquals("2", br.readLine());
+		assertEquals("2", br.readLine());
+		
+		fr.close();
+		br.close();
 	}
 }

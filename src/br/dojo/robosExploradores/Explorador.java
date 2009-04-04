@@ -1,7 +1,7 @@
 package br.dojo.robosExploradores;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -308,6 +308,9 @@ public class Explorador {
 		FileReader fr = new FileReader(arquivo);
 		BufferedReader br = new BufferedReader(fr);
 
+		File arquivoSaida = new File("resutadoExploracao");
+		arquivoSaida.delete();
+		
 		numeroInstancias = Integer.parseInt(br.readLine());
 
 		instancias = new ArrayList<String>();
@@ -315,6 +318,10 @@ public class Explorador {
 		while((s = br.readLine()) != null) {
 			instancias.add(s);
 		}
+		
+		fr.close();
+		br.close();
+		
 		return true;
 	}
 
@@ -339,12 +346,12 @@ public class Explorador {
 			}
 			
 			definirMapas(mapa1, mapa2);
-			FileWriter fw = new FileWriter("resutadoExploracao");
 			int resultado = explorarMapas();
-			fw.write(String.valueOf(resultado));
+			
+			FileWriter fw = new FileWriter("resutadoExploracao", true);
+			fw.append(String.valueOf(resultado)+"\n");
 			fw.close();
-			
-			
+						
 			return true;
 		}
 		return false;

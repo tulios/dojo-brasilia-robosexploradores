@@ -106,3 +106,7 @@
 3 � Leitura do arquivo (estimado 5)
 	- Leitura e interpretação (estimado 4, realizado 11)
 	- Arquivo de saída (estimado 1, reestimado 4, realizado 2)
+	
+	
+	
+	
