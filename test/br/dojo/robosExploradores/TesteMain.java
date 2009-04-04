@@ -15,5 +15,16 @@ public class TesteMain {
 		File saida = new File("resultadoExploracao");
 		assertTrue(saida.exists());
 	}
-
+	
+	@Test
+	public void testeExecucaoMainSemArgumentos(){
+		File arquivoSaida = new File("resultadoExploracao");
+		arquivoSaida.delete();
+		
+		String[] args = null;
+		Main.main(args);
+		
+		File saida = new File("resultadoExploracao");
+		assertTrue(!saida.exists());
+	}
 }
