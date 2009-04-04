@@ -8,14 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.org.apache.bcel.internal.generic.SALOAD;
-
 public class Explorador {
 
 	private String mapa1;
 	private String mapa2;
-	private char[][] arrayMapa1;
-	private char[][] arrayMapa2;
 
 	private int numeroInstancias;
 
@@ -40,9 +36,6 @@ public class Explorador {
 	public void definirMapas(String mapa1, String mapa2) {
 		this.mapa1 = mapa1;
 		this.mapa2 = mapa2;
-
-		this.arrayMapa1 = stringToArray(mapa1);
-		this.arrayMapa2 = stringToArray(mapa2);
 	}
 
 	public char[][] andar(char[][] arrayMapa1, Contador contador) {
@@ -227,6 +220,7 @@ public class Explorador {
 	public int explorarMapas() throws IOException {
 		prepararInstancia();
 		
+		char[][] arrayMapa1 = stringToArray(mapa1);
 		int distancia = calculaDistancia(arrayMapa1);
 
 		if (mapa1.contains("#")){			
