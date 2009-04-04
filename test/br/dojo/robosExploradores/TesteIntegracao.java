@@ -33,8 +33,6 @@ public class TesteIntegracao {
 		e.next();
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
-		
-		
 	}
 	
 	@Test
@@ -51,7 +49,7 @@ public class TesteIntegracao {
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 		
-		FileReader fr = new FileReader("resutadoExploracao");
+		FileReader fr = new FileReader("resultadoExploracao");
 		BufferedReader br = new BufferedReader(fr);
 		
 		assertEquals("1", br.readLine());
@@ -78,7 +76,7 @@ public class TesteIntegracao {
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 		
-		FileReader fr = new FileReader("resutadoExploracao");
+		FileReader fr = new FileReader("resultadoExploracao");
 		BufferedReader br = new BufferedReader(fr);
 		
 		assertEquals("1", br.readLine());

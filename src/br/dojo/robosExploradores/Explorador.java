@@ -308,7 +308,7 @@ public class Explorador {
 		FileReader fr = new FileReader(arquivo);
 		BufferedReader br = new BufferedReader(fr);
 
-		File arquivoSaida = new File("resutadoExploracao");
+		File arquivoSaida = new File("resultadoExploracao");
 		arquivoSaida.delete();
 		
 		numeroInstancias = Integer.parseInt(br.readLine());
@@ -348,7 +348,7 @@ public class Explorador {
 			definirMapas(mapa1, mapa2);
 			int resultado = explorarMapas();
 			
-			FileWriter fw = new FileWriter("resutadoExploracao", true);
+			FileWriter fw = new FileWriter("resultadoExploracao", true);
 			fw.append(String.valueOf(resultado)+"\n");
 			fw.close();
 						
