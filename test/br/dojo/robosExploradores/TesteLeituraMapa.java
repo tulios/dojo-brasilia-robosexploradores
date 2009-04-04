@@ -6,16 +6,6 @@ import static org.junit.Assert.*;
 public class TesteLeituraMapa {
 	
 	@Test
-	public void verificaLeituraTamanhoMapa(){
-		Explorador explorador = new Explorador();
-		explorador.setLinha(4);
-		explorador.setColuna(4);
-		
-		assertEquals(4, explorador.getLinha());
-		assertEquals(4, explorador.getColuna());
-	}
-	
-	@Test
 	public void mapaDeStringParaArray(){
 		String mapa =  ". . . .\n"+
 		   			   ". . . .\n"+

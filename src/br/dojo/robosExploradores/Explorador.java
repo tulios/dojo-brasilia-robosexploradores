@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Explorador {
-	private int linha;
-	private int coluna;
+
 	private String mapa1;
 	private String mapa2;
 	private char[][] arrayMapa1;
@@ -29,18 +28,7 @@ public class Explorador {
 	private List<String> instancias;
 	private int index;
 
-	public int getLinha() {
-		return linha;
-	}
-	public void setLinha(int linha) {
-		this.linha = linha;
-	}
-	public int getColuna() {
-		return coluna;
-	}
-	public void setColuna(int coluna) {
-		this.coluna = coluna;
-	}
+	
 
 	public String getMapa1() {
 		return mapa1;
@@ -333,8 +321,8 @@ public class Explorador {
 		if (index < instancias.size()){
 			String[] partes = instancias.get(index++).split(" ");
 
-			linha = Integer.parseInt(partes[0]);
-			coluna = Integer.parseInt(partes[1]);
+			int linha = Integer.parseInt(partes[0]);
+			int coluna = Integer.parseInt(partes[1]);
 			mapa1="";
 			mapa2="";
 			

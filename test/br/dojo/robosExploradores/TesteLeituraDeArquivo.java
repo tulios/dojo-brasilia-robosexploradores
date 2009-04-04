@@ -24,36 +24,12 @@ public class TesteLeituraDeArquivo {
 	}
 	
 	@Test
-	public void testeLeituraTamanhoMapa() throws IOException {
-		Explorador explorador = new Explorador();
-				
-		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
-		assertEquals(1, explorador.getNumeroInstancias());
-		explorador.next();
-		assertEquals(1, explorador.getLinha());
-		assertEquals(1, explorador.getColuna());
-	}
-	
-	@Test
-	public void testeLeituraTamanhoMapa2() throws IOException {
-		Explorador explorador = new Explorador();
-				
-		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste2"));
-		assertEquals(2, explorador.getNumeroInstancias());
-		explorador.next();
-		assertEquals(2, explorador.getLinha());
-		assertEquals(2, explorador.getColuna());
-	}
-	
-	@Test
 	public void testeLeituraMapa() throws IOException {
 		Explorador explorador = new Explorador();
 				
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
 		explorador.next();
-		assertEquals(1, explorador.getLinha());
-		assertEquals(1, explorador.getColuna());
 		
 		String mapa = ".\n";
 		assertEquals(mapa, explorador.getMapa1());
@@ -67,8 +43,6 @@ public class TesteLeituraDeArquivo {
 		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste2"));
 		assertEquals(2, explorador.getNumeroInstancias());
 		explorador.next();
-		assertEquals(2, explorador.getLinha());
-		assertEquals(2, explorador.getColuna());
 		
 		String mapa = "..\n"+
 					  "..\n";
@@ -87,9 +61,6 @@ public class TesteLeituraDeArquivo {
 		
 		String mapa = ".\n";
 
-		assertEquals(1, explorador.getLinha());
-		assertEquals(1, explorador.getColuna());
-
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 		
@@ -97,10 +68,6 @@ public class TesteLeituraDeArquivo {
 		mapa = "..\n"+
 			   "..\n";
 			   
-		
-		assertEquals(2, explorador.getLinha());
-		assertEquals(2, explorador.getColuna());
-
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 
@@ -118,9 +85,6 @@ public class TesteLeituraDeArquivo {
 		
 		String mapa = ".\n";
 
-		assertEquals(1, explorador.getLinha());
-		assertEquals(1, explorador.getColuna());
-
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 		
@@ -129,9 +93,6 @@ public class TesteLeituraDeArquivo {
 			   "..\n";
 			   
 		
-		assertEquals(2, explorador.getLinha());
-		assertEquals(2, explorador.getColuna());
-
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 		
@@ -141,9 +102,6 @@ public class TesteLeituraDeArquivo {
 			   "...\n";
 			   
 		
-		assertEquals(3, explorador.getLinha());
-		assertEquals(3, explorador.getColuna());
-
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
 	}
@@ -158,9 +116,6 @@ public class TesteLeituraDeArquivo {
 		explorador.next();
 		
 		String mapa = ".\n";
-
-		assertEquals(1, explorador.getLinha());
-		assertEquals(1, explorador.getColuna());
 
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
@@ -180,9 +135,6 @@ public class TesteLeituraDeArquivo {
 		String mapa = ".\n"+
 					  ".\n"+
 					  ".\n";
-
-		assertEquals(3, explorador.getLinha());
-		assertEquals(1, explorador.getColuna());
 
 		assertEquals(mapa, explorador.getMapa1());
 		assertEquals(mapa, explorador.getMapa2());
