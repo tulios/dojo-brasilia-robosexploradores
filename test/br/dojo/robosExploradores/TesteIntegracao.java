@@ -13,7 +13,7 @@ public class TesteIntegracao {
 	@Test
 	public void mapaSimples() throws IOException{
 		Explorador e = new Explorador();
-		e.lerArquivo("mapaIntegracao1");
+		e.lerArquivo("Arquivos-Teste/mapaIntegracao1");
 		
 		e.next();
 		int resultado = e.explorarMapas();
@@ -24,7 +24,7 @@ public class TesteIntegracao {
 	@Test
 	public void arquivoComDuasInstancias() throws IOException{
 		Explorador e = new Explorador();
-		e.lerArquivo("mapaIntegracao2");
+		e.lerArquivo("Arquivos-Teste/mapaIntegracao2");
 		
 		e.next();
 		int resultado = e.explorarMapas();
@@ -40,7 +40,7 @@ public class TesteIntegracao {
 	@Test
 	public void arquivoSaida() throws IOException{
 		Explorador e = new Explorador();
-		e.lerArquivo("mapaIntegracao2");
+		e.lerArquivo("Arquivos-Teste/mapaIntegracao2");
 		
 		e.next();
 		int resultado = e.explorarMapas();
@@ -64,7 +64,7 @@ public class TesteIntegracao {
 	@Test
 	public void testaEntradaSaidaMapaComTresInstancias() throws IOException{
 		Explorador e = new Explorador();
-		e.lerArquivo("mapaIntegracao3");
+		e.lerArquivo("Arquivos-Teste/mapaIntegracao3");
 		
 		e.next();
 		int resultado = e.explorarMapas();

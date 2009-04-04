@@ -11,7 +11,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraNumeroInstancias() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste1"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
 	}
 	
@@ -19,7 +19,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraNumeroInstancias2() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste2"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste2"));
 		assertEquals(2, explorador.getNumeroInstancias());
 	}
 	
@@ -27,7 +27,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraTamanhoMapa() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste1"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
 		explorador.next();
 		assertEquals(1, explorador.getLinha());
@@ -38,7 +38,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraTamanhoMapa2() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste2"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste2"));
 		assertEquals(2, explorador.getNumeroInstancias());
 		explorador.next();
 		assertEquals(2, explorador.getLinha());
@@ -49,7 +49,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraMapa() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste1"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
 		explorador.next();
 		assertEquals(1, explorador.getLinha());
@@ -64,7 +64,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraMapaComDuasLinhas() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste2"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste2"));
 		assertEquals(2, explorador.getNumeroInstancias());
 		explorador.next();
 		assertEquals(2, explorador.getLinha());
@@ -80,7 +80,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraMapaComDuasInstancias() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste3"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste3"));
 		assertEquals(2, explorador.getNumeroInstancias());
 
 		explorador.next();
@@ -111,7 +111,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraMapaComTresInstancias() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste4"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste4"));
 		assertEquals(3, explorador.getNumeroInstancias());
 
 		explorador.next();
@@ -152,7 +152,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraMapaComNextInvalido() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste1"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste1"));
 		assertEquals(1, explorador.getNumeroInstancias());
 
 		explorador.next();
@@ -172,7 +172,7 @@ public class TesteLeituraDeArquivo {
 	public void testeLeituraVertical() throws IOException {
 		Explorador explorador = new Explorador();
 				
-		assertTrue(explorador.lerArquivo("mapaTeste5"));
+		assertTrue(explorador.lerArquivo("Arquivos-Teste/mapaTeste5"));
 		assertEquals(1, explorador.getNumeroInstancias());
 
 		explorador.next();
