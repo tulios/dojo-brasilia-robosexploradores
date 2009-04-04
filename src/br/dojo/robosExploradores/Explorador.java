@@ -33,14 +33,8 @@ public class Explorador {
 	public String getMapa1() {
 		return mapa1;
 	}
-	public void setMapa1(String mapa1) {
-		this.mapa1 = mapa1;
-	}
 	public String getMapa2() {
 		return mapa2;
-	}
-	public void setMapa2(String mapa2) {
-		this.mapa2 = mapa2;
 	}
 
 	public void definirMapas(String mapa1, String mapa2) {
@@ -49,7 +43,6 @@ public class Explorador {
 
 		this.arrayMapa1 = stringToArray(mapa1);
 		this.arrayMapa2 = stringToArray(mapa2);
-
 	}
 
 	public char[][] andar(char[][] arrayMapa1, Contador contador) {
