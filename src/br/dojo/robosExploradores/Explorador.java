@@ -50,6 +50,9 @@ public class Explorador {
 	
 	private char[][] andar(char[][] arrayMapa1, Contador contador) {
 
+		//TODO Proximo passo: Trocar o retorno para int, tirar o contador, 
+		//trocar o nome do metodo andar para menorCaminho
+		
 		int distancia = calculaDistancia(arrayMapa1);
 		if(distancia == 1){
 			contador.valor++;
