@@ -1,6 +1,7 @@
 package br.dojo.robosExploradores;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,8 +13,8 @@ public class TesteIntegracao {
 	
 	@Test
 	public void mapaSimples() throws IOException{
-		Explorador e = new Explorador();
-		e.lerArquivo("Arquivos-Teste/mapaIntegracao1");
+		LeitorMapas leitor = new LeitorMapas("Arquivos-Teste/mapaIntegracao1");
+		Explorador e = leitor.gerarExplorador();
 		
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
@@ -22,29 +23,33 @@ public class TesteIntegracao {
 	
 	@Test
 	public void arquivoComDuasInstancias() throws IOException{
-		Explorador e = new Explorador();
-		e.lerArquivo("Arquivos-Teste/mapaIntegracao2");
+		LeitorMapas leitor = new LeitorMapas("Arquivos-Teste/mapaIntegracao2");
 		
+		assertTrue(leitor.hasNextExplorador());
+		Explorador e = leitor.gerarExplorador();
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 		
+		assertTrue(leitor.hasNextExplorador());
+		Explorador e2 = leitor.gerarExplorador();
 		
-		resultado = e.explorarMapas();
+		resultado = e2.explorarMapas();
 		assertEquals(2, resultado);
 	}
 	
 	@Test
 	public void arquivoSaida() throws IOException{
-		Explorador e = new Explorador();
-		e.lerArquivo("Arquivos-Teste/mapaIntegracao2");
+		LeitorMapas leitor = new LeitorMapas("Arquivos-Teste/mapaIntegracao2");
 		
-		
+		assertTrue(leitor.hasNextExplorador());
+		Explorador e = leitor.gerarExplorador();
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
+				
+		assertTrue(leitor.hasNextExplorador());
+		Explorador e2 = leitor.gerarExplorador();
 		
-		
-		
-		resultado = e.explorarMapas();
+		resultado = e2.explorarMapas();
 		assertEquals(2, resultado);
 		
 		FileReader fr = new FileReader("resultadoExploracao");
@@ -59,18 +64,20 @@ public class TesteIntegracao {
 	
 	@Test
 	public void testaEntradaSaidaMapaComTresInstancias() throws IOException{
-		Explorador e = new Explorador();
-		e.lerArquivo("Arquivos-Teste/mapaIntegracao3");
-		
-		
+		LeitorMapas leitor = new LeitorMapas("Arquivos-Teste/mapaIntegracao3");
+
+		assertTrue(leitor.hasNextExplorador());
+		Explorador e = leitor.gerarExplorador();
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
 		
-		
+		assertTrue(leitor.hasNextExplorador());
+		e = leitor.gerarExplorador();
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 		
-		
+		assertTrue(leitor.hasNextExplorador());
+		e = leitor.gerarExplorador();
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
 		

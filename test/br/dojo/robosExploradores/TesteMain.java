@@ -1,9 +1,10 @@
 package br.dojo.robosExploradores;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class TesteMain {
 
@@ -13,7 +14,7 @@ public class TesteMain {
 		Main.main(args);
 		
 		File saida = new File("resultadoExploracao");
-		assertTrue(saida.exists());
+		assertTrue("Não existe arquivo de resultado!", saida.exists());
 	}
 	
 	@Test

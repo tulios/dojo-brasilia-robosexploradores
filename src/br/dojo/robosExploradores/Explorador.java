@@ -1,19 +1,12 @@
 package br.dojo.robosExploradores;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Explorador {
 
 	private String mapa1;
 	private String mapa2;
-
-	private int numeroInstancias;
 
 	private Contador resultFinal = new Contador(51);
 
@@ -22,9 +15,6 @@ public class Explorador {
 
 	private int colunaFinal;
 	private int linhaFinal;
-
-	private List<String> instancias = new ArrayList<String>();
-	private int index;
 
 	public String getMapa1() {
 		return mapa1;
@@ -218,7 +208,6 @@ public class Explorador {
 	}
 
 	public int explorarMapas() throws IOException {
-		prepararInstancia();
 		
 		char[][] arrayMapa1 = stringToArray(mapa1);
 		int distancia = calculaDistancia(arrayMapa1);
@@ -281,53 +270,12 @@ public class Explorador {
 		return retorno;
 	}
 
-	public boolean lerArquivo(String arquivo) throws IOException {
-		FileReader fr = new FileReader(arquivo);
-		BufferedReader br = new BufferedReader(fr);
-
-		File arquivoSaida = new File("resultadoExploracao");
-		arquivoSaida.delete();
-		
-		numeroInstancias = Integer.parseInt(br.readLine());
-
-		String s = null;
-		while((s = br.readLine()) != null) {
-			instancias.add(s);
-		}
-		
-		fr.close();
-		br.close();
-		
-		return true;
-	}
-
-	public int getNumeroInstancias() {
-		return numeroInstancias;
-	}
-
-	private void prepararInstancia(){
-		if (index < instancias.size()){
-			String[] partes = instancias.get(index++).split(" ");
-
-			int linha = Integer.parseInt(partes[0]);
-			mapa1="";
-			mapa2="";
-			
-			for (int i = 0; i < linha; i++) {
-				mapa1 += instancias.get(index++)+"\n";
-			}
-			for (int i = 0; i < linha; i++) {
-				mapa2 += instancias.get(index++)+"\n";
-			}
-			
-			definirMapas(mapa1, mapa2);
-		}
-	}
 	private void gerarArquivoSaida(int resultado) throws IOException{
 		FileWriter fw = new FileWriter("resultadoExploracao", true);
 		fw.append(String.valueOf(resultado)+"\n");
 		fw.close();
 	}
+
 }
 
 
