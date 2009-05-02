@@ -134,7 +134,7 @@
 
 02/05/09
 
-	1 - 
+	1 - Refactoring de Arquitetura (7+13=20 pares, mais um tempo não contabilizado)
 
 
 
