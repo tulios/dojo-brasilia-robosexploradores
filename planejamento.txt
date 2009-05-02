@@ -110,3 +110,28 @@
 	
 	
 	
+04/04/09
+2 � Locomo��o
+	- Mapas iguais (estimado 6, realizado 7)
+	
+	- Mapas iguais com # e B (estimado 50, realizado 61)
+			Sem contorno (estimado 15, reestimado 20, realizado em 25)
+			Com contorno (estimado 30, realizado 36)
+	
+	- Mapas diferentes (estimado 10) (?)
+	
+	- Mapas diferentes com # e B (?)
+			Com # (?)
+			Com B (?)
+
+3 � Leitura do arquivo (estimado 5, reestimado 8, realizado 19)
+	- Leitura e interpretação (estimado 4, realizado 11)
+	- Arquivo de saída (estimado 1, reestimado 4, realizado 8)
+	
+4 � Release (n planejado)		
+	- Interface acesso (main) ( realizado 1)
+	- Refactoring (realizado 7)
+
+	
+	
+	
