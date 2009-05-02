@@ -25,7 +25,32 @@ public class Explorador {
 		this.mapa2 = mapa2;
 	}
 
-	public char[][] andar(char[][] arrayMapa1, Contador contador) {
+	
+	public int explorarMapas() {
+		
+		char[][] arrayMapa1 = stringToArray(mapa1);
+		int distancia = calculaDistancia(arrayMapa1);
+
+		if (mapa1.contains("#")){			
+			if(distancia == 1){
+				return 1;
+			}
+
+			Contador obj = new Contador();
+			if (andar(arrayMapa1, obj) == null) {
+				//caso nao haja caminhos possiveis
+				return -1;
+			}
+
+			if(resultFinal.valor>50)
+				return -1;
+			else
+				return resultFinal.valor;
+
+		}
+		return distancia;
+	}
+	private char[][] andar(char[][] arrayMapa1, Contador contador) {
 
 		int distancia = calculaDistancia(arrayMapa1);
 		if(distancia == 1){
@@ -152,36 +177,33 @@ public class Explorador {
 		return arrayMapa1;
 
 	}
-	private boolean naoPodeAndar(char[][] arrayMapa1) {
-		return !podeAndarDireita(arrayMapa1) && !podeAndarEsquerda(arrayMapa1) &&
-		!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
-	}
+	
 	private char[][] descer(char[][] arrayMapa1) {
-		char[][] arrayMapa = novoArray(arrayMapa1);
+		char[][] arrayMapa = cloneArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo+1][colunaRobo] = 'R';
 		return arrayMapa;
 	}
 	private char[][] andarDireita(char[][] arrayMapa1) {
-		char[][] arrayMapa = novoArray(arrayMapa1);
+		char[][] arrayMapa = cloneArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo][colunaRobo+1] = 'R';
 		return arrayMapa;
 	}
 	private char[][] andarEsquerda(char[][] arrayMapa1) {
-		char[][] arrayMapa = novoArray(arrayMapa1);
+		char[][] arrayMapa = cloneArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo][colunaRobo-1] = 'R';
 		return arrayMapa;
 	}
 	private char[][] subir(char[][] arrayMapa1) {
-		char[][] arrayMapa = novoArray(arrayMapa1);
+		char[][] arrayMapa = cloneArray(arrayMapa1);
 		arrayMapa[linhaRobo][colunaRobo] = '*';
 		arrayMapa[linhaRobo-1][colunaRobo] = 'R';
 		return arrayMapa;
 	}
 
-	private char[][] novoArray(char[][] array){
+	private char[][] cloneArray(char[][] array){
 		char[][] retorno = new char[array.length][array[0].length];
 		for (int x=0; x<array.length; x++){
 			for (int y=0; y<array[x].length; y++){
@@ -203,31 +225,11 @@ public class Explorador {
 	private boolean podeDescer(char[][] arrayMapa1) {
 		return (linhaRobo + 1) < arrayMapa1.length && arrayMapa1[linhaRobo+1][colunaRobo] == '.';
 	}
-
-	public int explorarMapas() {
-		
-		char[][] arrayMapa1 = stringToArray(mapa1);
-		int distancia = calculaDistancia(arrayMapa1);
-
-		if (mapa1.contains("#")){			
-			if(distancia == 1){
-				return 1;
-			}
-
-			Contador obj = new Contador();
-			if (andar(arrayMapa1, obj) == null) {
-				//caso nao haja caminhos possiveis
-				return -1;
-			}
-
-			if(resultFinal.valor>50)
-				return -1;
-			else
-				return resultFinal.valor;
-
-		}
-		return distancia;
+	private boolean naoPodeAndar(char[][] arrayMapa1) {
+		return !podeAndarDireita(arrayMapa1) && !podeAndarEsquerda(arrayMapa1) &&
+		!podeDescer(arrayMapa1) && !podeSubir(arrayMapa1);
 	}
+	
 
 	private int calculaDistancia(char[][] arrayMapa1) {
 		localizarRoboEFinal(arrayMapa1);
