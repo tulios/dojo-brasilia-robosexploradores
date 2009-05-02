@@ -31,24 +31,21 @@ public class Explorador {
 		char[][] arrayMapa1 = stringToArray(mapa1);
 		int distancia = calculaDistancia(arrayMapa1);
 
-		if (mapa1.contains("#")){			
-			if(distancia == 1){
-				return 1;
-			}
-
-			Contador obj = new Contador();
-			if (andar(arrayMapa1, obj) == null) {
-				//caso nao haja caminhos possiveis
-				return -1;
-			}
-
-			if(resultFinal.valor>50)
-				return -1;
-			else
-				return resultFinal.valor;
-
+		if(distancia == 1){
+			return 1;
 		}
-		return distancia;
+
+		Contador obj = new Contador();
+		if (andar(arrayMapa1, obj) == null) {
+			//caso nao haja caminhos possiveis
+			return -1;
+		}
+
+		if(resultFinal.valor>50) {
+			return -1;
+		}
+		
+		return resultFinal.valor;
 	}
 	
 	private char[][] andar(char[][] arrayMapa1, Contador contador) {
