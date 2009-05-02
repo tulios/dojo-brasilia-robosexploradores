@@ -1,9 +1,10 @@
 package br.dojo.robosExploradores;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class TesteLocomocaoMapasIguaisComObstaculos {
 
@@ -13,8 +14,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # \n" +
 		". R \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4, resultado);
@@ -26,8 +26,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # \n" +
 		"R . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(3, resultado);
@@ -40,8 +40,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # \n" +
 		". . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(1, resultado);
@@ -53,8 +53,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"R # \n" +
 		". . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(2, resultado);
@@ -66,8 +66,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"# . \n" +
 		"R . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(4, resultado);
@@ -79,8 +79,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # . \n" +
 		". R . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(4, resultado);
@@ -92,8 +92,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # . \n" +
 		". . R \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(3, resultado);
@@ -105,8 +105,8 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # # \n" +
 		". . R \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
+
 
 		int resultado = e.explorarMapas();
 		assertEquals(5, resultado);
@@ -118,8 +118,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"# # . \n" +
 		"R . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(5, resultado);
@@ -131,8 +130,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # . \n" +
 		". R . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4, resultado);
@@ -144,8 +142,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"R # . \n" +
 		". . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(6 , resultado);
@@ -157,8 +154,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # R \n" +
 		". . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(6 , resultado);
@@ -170,8 +166,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		String mapa = 	". # . \n" +
 		"R . F \n" ;
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(2 , resultado);
@@ -182,8 +177,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		String mapa = 	". # . \n" +
 		"F . R \n" ;
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(2 , resultado);
@@ -194,8 +188,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		String mapa = 	". . . \n" +
 		"F # R \n" ;
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -205,8 +198,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		String mapa = 	"F # R \n"+
 		". . . \n" ;
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -217,8 +209,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		String mapa = 	"R # F \n"+
 					    ". . . \n" ;
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -229,8 +220,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		String mapa = 	". . . \n"+
 		"R # F \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -242,8 +232,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # . \n"+
 		". . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(6 , resultado);
@@ -255,8 +244,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # . \n"+
 		". . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(6 , resultado);
@@ -269,8 +257,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"# . # . \n"+
 		"# . . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(9 , resultado);
@@ -282,8 +269,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"# . # \n"+
 		". . F \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -295,8 +281,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		"# . # \n"+
 		"F . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -308,8 +293,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". . . \n"+
 		"F . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(2 , resultado);
@@ -321,8 +305,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". . . \n"+
 		"# . . \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(2 , resultado);
@@ -334,8 +317,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # # \n"+
 		". # F \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(-1 , resultado);
@@ -347,8 +329,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 		". # . \n"+
 		". # F \n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -361,8 +342,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # # .\n"+
 						". R . .\n";
 
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 
 		int resultado = e.explorarMapas();
 		assertEquals(5 , resultado);
@@ -375,8 +355,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # # .\n"+
 						". . R .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(5 , resultado);
@@ -389,8 +368,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . \n"+
 						"R . . \n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -404,8 +382,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . # .\n"+
 						". . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -419,8 +396,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . # .\n"+
 						". . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -435,8 +411,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . # .\n"+
 						". . . . F\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -450,8 +425,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . # .\n"+
 						"F . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -465,8 +439,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . # .\n"+
 						". . . . F\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -480,8 +453,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". . # R . .\n"+
 						". . . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(5 , resultado);
@@ -495,8 +467,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # . # #\n"+
 						". . . . F\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(4 , resultado);
@@ -511,8 +482,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". . # # #\n"+
 						". . . . F\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(18 , resultado);
@@ -527,8 +497,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						"# # # . .\n"+
 						"F . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(18 , resultado);
@@ -543,8 +512,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						"# # # . .\n"+
 						"R . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(18 , resultado);
@@ -559,8 +527,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # # # #\n"+
 						"R . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(14 , resultado);
@@ -575,8 +542,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # # # .\n"+
 						"R . . . .\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(-1 , resultado);
@@ -589,8 +555,7 @@ public class TesteLocomocaoMapasIguaisComObstaculos {
 						". # B B\n"+
 						". . . R\n";
 		
-		Explorador e = new Explorador();
-		e.definirMapas(mapa, mapa);
+		Explorador e = new Explorador(mapa, mapa);
 		
 		int resultado = e.explorarMapas();
 		assertEquals(8 , resultado);

@@ -1,7 +1,5 @@
 package br.dojo.robosExploradores;
 
-import java.io.IOException;
-
 public class Explorador {
 
 	private String mapa1;
@@ -22,7 +20,7 @@ public class Explorador {
 		return mapa2;
 	}
 
-	public void definirMapas(String mapa1, String mapa2) {
+	public Explorador (String mapa1, String mapa2) {
 		this.mapa1 = mapa1;
 		this.mapa2 = mapa2;
 	}
@@ -206,7 +204,7 @@ public class Explorador {
 		return (linhaRobo + 1) < arrayMapa1.length && arrayMapa1[linhaRobo+1][colunaRobo] == '.';
 	}
 
-	public int explorarMapas() throws IOException {
+	public int explorarMapas() {
 		
 		char[][] arrayMapa1 = stringToArray(mapa1);
 		int distancia = calculaDistancia(arrayMapa1);

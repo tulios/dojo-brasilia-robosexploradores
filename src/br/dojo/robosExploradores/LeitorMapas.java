@@ -44,26 +44,22 @@ public class LeitorMapas {
 	}
 
 	public Explorador gerarExplorador() {
-		String mapa1 = "";
-		String mapa2 = "";
-		Explorador e = new Explorador();
 		
 	
 		String[] partes = linhasDoArquivo.get(index++).split(" ");
 
 		int linha = Integer.parseInt(partes[0]);
 		
+		String mapa1 = "";
 		for (int i = 0; i < linha; i++) {
 			mapa1 += linhasDoArquivo.get(index++)+"\n";
 		}
+		String mapa2 = "";
 		for (int i = 0; i < linha; i++) {
 			mapa2 += linhasDoArquivo.get(index++)+"\n";
-		}
+		}	
 		
-		e.definirMapas(mapa1, mapa2);
-	
-		
-		return e;
+		return new Explorador(mapa1, mapa2);
 	}
 
 	public int getNumeroInstancias() {
