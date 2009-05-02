@@ -1,5 +1,6 @@
 package br.dojo.robosExploradores;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -9,8 +10,10 @@ public class Main {
 		try {
 			if (args != null && args.length > 0){
 				
+				File arqSaida = new File("resultadoExploracao");
+				arqSaida.delete();
+
 				FileWriter fw = new FileWriter("resultadoExploracao", true);
-				
 				
 				LeitorMapas leitor = new LeitorMapas(args[0]);
 				while(leitor.hasNextExplorador()) {

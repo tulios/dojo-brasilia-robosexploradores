@@ -3,8 +3,6 @@ package br.dojo.robosExploradores;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
 import org.junit.Test;
@@ -52,14 +50,6 @@ public class TesteIntegracao {
 		resultado = e2.explorarMapas();
 		assertEquals(2, resultado);
 		
-		FileReader fr = new FileReader("resultadoExploracao");
-		BufferedReader br = new BufferedReader(fr);
-		
-		assertEquals("1", br.readLine());
-		assertEquals("2", br.readLine());
-		
-		fr.close();
-		br.close();
 	}
 	
 	@Test
@@ -80,15 +70,6 @@ public class TesteIntegracao {
 		e = leitor.gerarExplorador();
 		resultado = e.explorarMapas();
 		assertEquals(2, resultado);
-		
-		FileReader fr = new FileReader("resultadoExploracao");
-		BufferedReader br = new BufferedReader(fr);
-		
-		assertEquals("1", br.readLine());
-		assertEquals("2", br.readLine());
-		assertEquals("2", br.readLine());
-		
-		fr.close();
-		br.close();
+
 	}
 }

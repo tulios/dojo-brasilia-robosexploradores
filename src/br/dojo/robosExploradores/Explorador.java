@@ -1,6 +1,5 @@
 package br.dojo.robosExploradores;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Explorador {
@@ -229,7 +228,6 @@ public class Explorador {
 				return resultFinal.valor;
 
 		}
-		gerarArquivoSaida(distancia);
 		return distancia;
 	}
 
@@ -268,12 +266,6 @@ public class Explorador {
 			}									
 		} 
 		return retorno;
-	}
-
-	private void gerarArquivoSaida(int resultado) throws IOException{
-		FileWriter fw = new FileWriter("resultadoExploracao", true);
-		fw.append(String.valueOf(resultado)+"\n");
-		fw.close();
 	}
 
 }

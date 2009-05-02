@@ -1,7 +1,6 @@
 package br.dojo.robosExploradores;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,9 +25,6 @@ public class LeitorMapas {
 	public void lerArquivo(String arquivo) throws IOException {
 		FileReader fr = new FileReader(arquivo);
 		BufferedReader br = new BufferedReader(fr);
-
-		File arquivoSaida = new File("resultadoExploracao");
-		arquivoSaida.delete();
 		
 		numeroInstancias = Integer.parseInt(br.readLine());
 
